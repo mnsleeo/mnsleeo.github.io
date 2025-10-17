@@ -1,0 +1,1760 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI와 함께하는 능률 레벨업 - AI 메뉴얼</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(240, 147, 251, 0.4);
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(135deg, #f5576c 0%, #f093fb 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(245, 87, 108, 0.6);
+        }
+
+        /* Main Content */
+        .main-content {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .section {
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Table Section (for curriculum, design) */
+        .table-wrap {
+            overflow-x: auto;
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border: 1px solid #f0f0f0;
+        }
+
+        table.ai-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 820px;
+        }
+
+        .ai-table thead th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #fff;
+            padding: 14px 16px;
+            text-align: left;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+        }
+
+        .ai-table tbody td {
+            padding: 14px 16px;
+            vertical-align: top;
+            border-top: 1px solid #eee;
+            color: #444;
+        }
+
+        .ai-table tbody tr:hover {
+            background: #fafbff;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: #eef2ff;
+            color: #4f46e5;
+            font-size: 12px;
+            font-weight: 600;
+            margin-right: 6px;
+        }
+
+        /* AI Tools Grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .tool-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #f0f0f0;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .tool-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .tool-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .tool-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .tool-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .tool-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Tips Section */
+        .tips-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .tip-item {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .tip-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .tip-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .tip-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .tip-item p {
+            color: #666;
+        }
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .feature-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .feature-item p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Interactive Demo */
+        .demo-section {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .demo-container {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .demo-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .demo-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .demo-button {
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .demo-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .demo-result {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            text-align: left;
+            min-height: 100px;
+            border-left: 4px solid #667eea;
+        }
+
+        /* Recommend Section */
+        .recommend-section {
+            background: #ffffff;
+            padding: 80px 0;
+        }
+
+        .rec-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .rec-form .full {
+            grid-column: 1 / -1;
+        }
+
+        .input, .select, .textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.2s ease;
+            background: #fff;
+        }
+
+        .textarea { min-height: 110px; resize: vertical; }
+        .input:focus, .select:focus, .textarea:focus { outline: none; border-color: #667eea; }
+
+        .rec-actions { display: flex; gap: .75rem; }
+
+        .tag {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: #eef2ff;
+            color: #4f46e5;
+            font-size: 12px;
+            font-weight: 600;
+            margin-right: 6px;
+        }
+
+        .rec-result {
+            margin-top: 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1rem;
+        }
+
+        .rec-card {
+            background: white;
+            border: 1px solid #f0f0f0;
+            border-radius: 14px;
+            padding: 1rem;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+        }
+
+        .rec-card h4 { margin-bottom: .5rem; }
+        .rec-card p { color: #666; font-size: .95rem; }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(240, 147, 251, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, #f5576c 0%, #f093fb 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 87, 108, 0.4);
+        }
+
+        .btn-secondary:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 8px rgba(245, 87, 108, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .rec-form { grid-template-columns: 1fr; }
+        }
+
+        /* Footer */
+        .footer {
+            background: #333;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #667eea;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #555;
+            padding-top: 2rem;
+            color: #999;
+        }
+
+        /* Alerts */
+        .alert {
+            display: none;
+            background: #fff4e5;
+            color: #9a6700;
+            border: 1px solid #ffd699;
+            border-radius: 10px;
+            padding: 12px 16px;
+            margin: 10px 0 0;
+        }
+        .alert.show { display: block; }
+
+        /* Settings Modal */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
+        .modal.open { display: flex; }
+        .modal-card {
+            background: #fff;
+            width: 94%;
+            max-width: 520px;
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+            padding: 24px;
+        }
+        .modal-header { display:flex; justify-content:space-between; align-items:center; margin-bottom: 12px; }
+        .close-btn { background: none; border: none; font-size: 22px; cursor: pointer; }
+        .hint { color:#666; font-size:.9rem; margin-top:.5rem }
+        .row { display:flex; gap:.75rem; }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Demo Section Styles */
+        .demo-section {
+            background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+            padding: 80px 0;
+        }
+
+        .demo-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .demo-container h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+
+        .demo-form {
+            margin-bottom: 2rem;
+        }
+
+        .demo-textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: inherit;
+            resize: vertical;
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+        }
+
+        .demo-textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .demo-button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .demo-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .demo-button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .demo-result {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+            text-align: left;
+        }
+
+        .demo-placeholder {
+            text-align: center;
+            color: #666;
+        }
+
+        .demo-placeholder ul {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .demo-placeholder li {
+            margin-bottom: 0.5rem;
+        }
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tips-container {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+
+        /* Scroll animations */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo">🤖 AI 메뉴얼</div>
+            <ul class="nav-links">
+                <li><a href="#home">홈</a></li>
+                <li><a href="#curriculum">교재개발</a></li>
+                <li><a href="#design">디자인</a></li>
+                <li><a href="#marketing">마케팅</a></li>
+                <li><a href="#tools">AI 도구</a></li>
+                <li><a href="#recommend">상황별 추천</a></li>
+                <li><a href="#demo">체험하기</a></li>
+                <li><a href="#tips">활용 팁</a></li>
+                <li><a href="#contact">문의</a></li>
+                <li><a href="#" id="openSettings">설정</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>AI와 함께하는 능률 레벨업</h1>
+            <p>인공지능을 활용하여 업무 효율성을 극대화하고 새로운 가능성을 발견하세요</p>
+            <a href="#tools" class="cta-button">AI 도구 탐색하기</a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Recommend Section -->
+        <section id="recommend" class="recommend-section">
+            <div class="container">
+                <h2 class="section-title scroll-animate">상황별 AI 추천</h2>
+                <div class="scroll-animate">
+                    <form id="recForm" class="rec-form">
+                        <input class="input" type="text" id="goal" placeholder="목표 (예: 교재용 문항 제작, 브랜드 이미지 생성)">
+                        <select class="select" id="domain">
+                            <option value="">분야 선택</option>
+                            <option value="writing">작문/교정</option>
+                            <option value="translation">번역</option>
+                            <option value="assessment">문항/평가</option>
+                            <option value="design">디자인/이미지</option>
+                            <option value="marketing">마케팅/카피</option>
+                            <option value="video">영상/모션</option>
+                            <option value="search">리서치/검색</option>
+                        </select>
+                        <select class="select" id="constraints">
+                            <option value="">제약 조건</option>
+                            <option value="speed">빠른 작업</option>
+                            <option value="quality">품질 우선</option>
+                            <option value="evidence">출처/근거 필요</option>
+                            <option value="free">무료/저비용</option>
+                            <option value="privacy">사내/개인정보 고려</option>
+                        </select>
+                        <input class="input" type="text" id="keywords" placeholder="키워드 (쉼표로 구분)">
+                        <textarea class="textarea full" id="context" placeholder="상황 설명을 자유롭게 입력하세요. (예: 학년/수준, 매체, 톤, 마감시간 등)"></textarea>
+                        <div class="rec-actions full">
+                            <button type="button" class="demo-button" id="btnRecommend">
+                                <span id="btnText">🤖 AI 추천 받기</span>
+                                <span id="btnLoading" style="display: none;">⏳ 분석 중...</span>
+                            </button>
+                            <button type="button" class="btn btn-secondary" id="btnClear">초기화</button>
+                        </div>
+                    </form>
+                    <div id="apiAlert" class="alert">브라우저에서 파일을 직접 연다면(file://) OpenAI가 CORS로 차단할 수 있습니다. 간단 서버에서 `http://localhost`로 열어주세요.</div>
+                    <div id="recChips" style="margin-bottom: .75rem"></div>
+                    <div id="recResults" class="rec-result"></div>
+                </div>
+            </div>
+        </section>
+        <!-- 1. 교재 개발 Section -->
+        <section id="curriculum" class="section">
+            <div class="container">
+                <h2 class="section-title scroll-animate">교재개발</h2>
+                <div class="table-wrap scroll-animate">
+                    <table class="ai-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 16%">AI 도구</th>
+                                <th style="width: 44%">구체 프롬프트 예시</th>
+                                <th style="width: 40%">활용 포인트</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="badge">작문</span>ChatGPT</td>
+                                <td>• 학습 목표에 맞는 영어 지문 3개 작성<br>• 학생 수준(HS2, 16세)에 맞춘 흥미로운 문장 구성<br>• 교재용 대화체 예문 생성</td>
+                                <td>주제와 수준을 명확히 제시하면 빠르게 초안 작성 가능. 학습 목표, 단어 수준 명시 필수</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge">작문</span>Claude</td>
+                                <td>• 특정 문법 포인트를 활용한 예문 10개 생성<br>• 글의 톤: 재미있고 자연스럽게</td>
+                                <td>문체·톤 조절이 쉽고, ChatGPT와 비교해 장문의 글 작성에 강점</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge">작문</span>Jasper</td>
+                                <td>• AI 글쓰기 도구 활용, 학생 참여형 질문 포함</td>
+                                <td>블로그나 SNS용 교육 자료, 시리즈 콘텐츠 제작 시 효율적</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge">번역</span>DeepL</td>
+                                <td>• "영어 지문을 한국어로 자연스럽게 번역"<br>• "한국어 지문을 영어 학습용으로 변환"</td>
+                                <td>번역 품질 높음, 문맥·학습용 수준 고려 가능</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge">번역</span>ChatGPT + DeepL</td>
+                                <td>• ChatGPT로 영작 후 DeepL로 자연스러운 표현 개선</td>
+                                <td>두 단계 활용: ChatGPT → 초안 생성, DeepL → 자연스러운 문장</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge">번역</span>Google Translate</td>
+                                <td>• 간단 문장, 빠른 참고용</td>
+                                <td>다소 직역 가능, 참고용으로 활용</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge">문항</span>ChatGPT</td>
+                                <td>• 지문 기반 단어/문법 문제 5개 생성<br>• 객관식/주관식/빈칸 등 문제 유형 지정</td>
+                                <td>난이도, 문법 포인트 명시하면 맞춤형 문제 제작 가능</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge">문항</span>Perplexity AI</td>
+                                <td>• 최신 교육 트렌드·디지털 학습 도구 관련 문제 생성<br>• 출처 기반 답변 생성</td>
+                                <td>정확도 높은 자료 기반 문제 제작, 근거 제시 가능</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge">문항</span>Quizlet</td>
+                                <td>• 단어장·퀴즈 자동 생성</td>
+                                <td>단어·숙어 반복 학습용, 학생 맞춤 세트 제작</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge">교정</span>Perplexity AI</td>
+                                <td>• 문법·표현 오류 점검<br>• 최신 영어 교육 표현 확인</td>
+                                <td>정확도가 높음, 근거 기반 검수 가능</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge">교정</span>Grammarly</td>
+                                <td>• 문법·표현·문체 검토<br>• 학생 수준 맞춤 피드백</td>
+                                <td>영어 문법 오류 빠르게 수정, 스타일 체크 가능</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge">교정</span>ChatGPT</td>
+                                <td>• 교재용 문장 자연스러운 문체로 수정</td>
+                                <td>톤 조절, 교재용 예문 다듬기 유리</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 디자인 Section -->
+        <section id="design" class="section">
+            <div class="container">
+                <h2 class="section-title scroll-animate">디자인</h2>
+                <div class="table-wrap scroll-animate">
+                    <table class="ai-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 16%">AI 도구</th>
+                                <th style="width: 44%">구체 프롬프트 예시</th>
+                                <th style="width: 40%">활용 포인트</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>DALLE 3 (OpenAI/MS)</td>
+                                <td>"자연광과 흰 배경으로 사실적인 제품 이미지를 만들어 줘."</td>
+                                <td>• 사실적 인물·제품 이미지 제작에 최적화<br>• 자연스러운 배경과 조명 구현 가능<br>• 교재 실사 이미지, 광고 시각 자료에 활용</td>
+                            </tr>
+                            <tr>
+                                <td>Adobe Firefly</td>
+                                <td>"잡지 표지용 벡터 스타일 일러스트를 만들어 줘. Adobe Illustrator와 호환 가능해야 해."</td>
+                                <td>• Adobe CC 연동으로 편집 용이<br>• 출판·편집용 고해상도 그래픽 제작 가능<br>• 저작권 안정성 확보 가능</td>
+                            </tr>
+                            <tr>
+                                <td>Stable Diffusion / Clipdrop</td>
+                                <td>"조명 변화를 반영한 미래 도시 콘셉트 스케치를 만들어 줘."</td>
+                                <td>• 오픈소스 커스터마이징 최적<br>• 러프 드로잉, 콘셉트 스케치 제작 강점<br>• 이미지 조명과 질감 세부 조절 가능</td>
+                            </tr>
+                            <tr>
+                                <td>Midjourney</td>
+                                <td>"드라마틱하고 예술적인 스타일의 판타지 캐릭터를 그려 줘."</td>
+                                <td>• 아트워크·일러스트레이션에 최적화<br>• 스타일 일관성과 고품질<br>• 교재 표지, 브랜드 시각 자료에 활용</td>
+                            </tr>
+                            <tr>
+                                <td>Runway</td>
+                                <td>"구름이 움직이는 석양 장면의 짧은 영상 클립을 만들어 줘."</td>
+                                <td>• 모션 그래픽·영상 편집 자동화<br>• 씬 확장, 자막 생성 기능<br>• 교육용 숏폼 콘텐츠 제작에 적합</td>
+                            </tr>
+                            <tr>
+                                <td>Playground AI</td>
+                                <td>"만화 스타일 캐릭터를 다양한 포즈로 시트 생성해줘."</td>
+                                <td>• 캐릭터 일러스트 반복 생성에 유리<br>• 스케치 기반 리파인 지원<br>• 교재용 캐릭터 시트 제작에 활용</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 마케팅 Section -->
+        <section id="marketing" class="section">
+            <div class="container">
+                <h2 class="section-title scroll-animate">마케팅</h2>
+                <div class="table-wrap scroll-animate">
+                    <table class="ai-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 16%">AI 도구</th>
+                                <th style="width: 44%">구체 프롬프트 예시</th>
+                                <th style="width: 40%">활용 포인트</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="badge">콘텐츠</span>ChatGPT</td>
+                                <td>• 교육 브랜드용 SNS 캠페인 아이디어 10개 생성<br>• 타겟: 중학생 학부모, 톤: 친근하고 신뢰감 있게</td>
+                                <td>브레인스토밍과 초안 작성에 효율적. 다양한 톤과 스타일 조절 가능</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge">리서치</span>Perplexity AI</td>
+                                <td>• "2024년 교육 마케팅 트렌드를 요약해줘. 특히 디지털 학습 도구, AI 학습 보조앱과 연계된 콘텐츠 마케팅 사례를 중심으로."</td>
+                                <td>시장 동향·경쟁사 캠페인 조사용으로 효율적. 출처 기반 답변을 함께 제시함</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge">SNS</span>ChatGPT</td>
+                                <td>• 인스타그램용 교육 콘텐츠 캡션 5개 작성<br>• 해시태그 10개 포함, 이모지 활용</td>
+                                <td>SNS 최적화된 콘텐츠 생성. 플랫폼별 특성에 맞는 톤 조절 가능</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge">카피</span>ChatGPT</td>
+                                <td>• 교육 서비스 홍보용 A/B 테스트 카피 3세트 생성<br>• 각각 다른 어필 포인트로 구성</td>
+                                <td>다양한 마케팅 카피 변형 생성. 타겟별 맞춤 메시지 개발에 유용</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge">이미지</span>DALLE 3</td>
+                                <td>"마케팅 브로슈어용 빠른 콘셉트 이미지를 만들어 줘."</td>
+                                <td>• 빠른 시안 작업에 최적<br>• DALL·E 3 기반으로 상업적 활용도 높음<br>• 브랜드 일관성 유지 가능</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge">영상</span>Runway</td>
+                                <td>• 교육 서비스 소개용 30초 영상 스크립트 기반으로 모션 그래픽 생성</td>
+                                <td>영상 콘텐츠 자동화 제작. SNS용 숏폼 콘텐츠에 적합</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Tools Section -->
+        <section id="tools" class="section">
+            <div class="container">
+                <h2 class="section-title scroll-animate">인기 AI 도구</h2>
+                <div class="tools-grid">
+                    <div class="tool-card scroll-animate">
+                        <span class="tool-icon">📝</span>
+                        <h3>ChatGPT</h3>
+                        <p>텍스트 생성, 번역, 코딩, 창작 등 다양한 작업을 도와주는 대화형 AI</p>
+                        <a href="https://chat.openai.com" target="_blank" class="tool-link">자세히 보기</a>
+                    </div>
+                    <div class="tool-card scroll-animate">
+                        <span class="tool-icon">🎨</span>
+                        <h3>DALL-E</h3>
+                        <p>텍스트 설명을 바탕으로 창의적이고 독창적인 이미지를 생성하는 AI</p>
+                        <a href="https://openai.com/dall-e-3" target="_blank" class="tool-link">자세히 보기</a>
+                    </div>
+                    <div class="tool-card scroll-animate">
+                        <span class="tool-icon">🤖</span>
+                        <h3>Claude</h3>
+                        <p>Anthropic의 대화형 AI로 창작, 분석, 코딩 등 다양한 작업 지원</p>
+                        <a href="https://claude.ai" target="_blank" class="tool-link">자세히 보기</a>
+                    </div>
+                    <div class="tool-card scroll-animate">
+                        <span class="tool-icon">🎨</span>
+                        <h3>Midjourney</h3>
+                        <p>텍스트 프롬프트로 아름다운 아트워크와 이미지를 생성하는 AI</p>
+                        <a href="https://www.midjourney.com" target="_blank" class="tool-link">자세히 보기</a>
+                    </div>
+                    <div class="tool-card scroll-animate">
+                        <span class="tool-icon">🔍</span>
+                        <h3>Perplexity AI</h3>
+                        <p>실시간 정보 검색과 출처가 명확한 답변을 제공하는 AI 검색</p>
+                        <a href="https://perplexity.ai" target="_blank" class="tool-link">자세히 보기</a>
+                    </div>
+                    <div class="tool-card scroll-animate">
+                        <span class="tool-icon">📝</span>
+                        <h3>Grammarly</h3>
+                        <p>문법 검사, 스타일 개선, 톤 조절을 도와주는 AI 글쓰기 도구</p>
+                        <a href="https://www.grammarly.com" target="_blank" class="tool-link">자세히 보기</a>
+                    </div>
+                    <div class="tool-card scroll-animate">
+                        <span class="tool-icon">🎵</span>
+                        <h3>ElevenLabs</h3>
+                        <p>자연스러운 음성 합성과 음성 복제를 제공하는 AI 음성 도구</p>
+                        <a href="https://elevenlabs.io" target="_blank" class="tool-link">자세히 보기</a>
+                    </div>
+                    <div class="tool-card scroll-animate">
+                        <span class="tool-icon">🎬</span>
+                        <h3>Runway</h3>
+                        <p>AI 기반 영상 편집과 생성 도구로 크리에이티브 콘텐츠 제작</p>
+                        <a href="https://runwayml.com" target="_blank" class="tool-link">자세히 보기</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Demo Section -->
+        <section id="demo" class="demo-section">
+            <div class="container">
+                <h2 class="section-title scroll-animate">AI 체험하기</h2>
+                <div class="demo-container scroll-animate">
+                    <h3>🤖 AI와 대화해보세요</h3>
+                    <p style="margin-bottom: 2rem; color: #666;">아래 입력창에 질문이나 요청을 입력하고 AI의 응답을 확인해보세요.</p>
+                    
+                    <div class="demo-form">
+                        <textarea class="demo-textarea" id="demoInput" placeholder="예: 인공지능의 미래에 대해 설명해줘, 창의적인 글쓰기 팁을 알려줘, 비즈니스 전략을 수립하는 방법은?"></textarea>
+                        <button class="demo-button" id="demoButton">
+                            <span id="demoBtnText">✨ AI에게 질문하기</span>
+                            <span id="demoBtnLoading" style="display: none;">⏳ AI가 답변 중...</span>
+                        </button>
+                    </div>
+                    
+                    <div class="demo-result" id="demoResult">
+                        <div class="demo-placeholder">
+                            <p>💡 <strong>사용법:</strong></p>
+                            <ul style="text-align: left; margin: 1rem 0;">
+                                <li>위 입력창에 질문이나 요청을 입력하세요</li>
+                                <li>"AI에게 질문하기" 버튼을 클릭하세요</li>
+                                <li>AI의 답변을 확인하세요</li>
+                            </ul>
+                            <p><em>※ API 키가 자동으로 설정되어 있습니다. 바로 사용하실 수 있습니다!</em></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tips Section -->
+        <section id="tips" class="section">
+            <div class="container">
+                <h2 class="section-title scroll-animate">AI 활용 성공 팁</h2>
+                <div class="tips-container">
+                    <div class="tip-item scroll-animate">
+                        <span class="tip-number">1</span>
+                        <h4>명확한 프롬프트 작성</h4>
+                        <p>AI에게 요청할 때 구체적이고 명확한 지시사항을 제공하세요. 맥락과 예시를 포함하면 더 좋은 결과를 얻을 수 있습니다.</p>
+                    </div>
+                    <div class="tip-item scroll-animate">
+                        <span class="tip-number">2</span>
+                        <h4>반복 학습과 개선</h4>
+                        <p>AI의 응답을 검토하고 피드백을 제공하여 점진적으로 성능을 향상시키세요. 학습 데이터의 품질이 결과에 큰 영향을 미칩니다.</p>
+                    </div>
+                    <div class="tip-item scroll-animate">
+                        <span class="tip-number">3</span>
+                        <h4>도구 조합 활용</h4>
+                        <p>여러 AI 도구를 조합하여 사용하면 시너지 효과를 얻을 수 있습니다. 예를 들어 텍스트 생성 + 이미지 생성 + 번역을 연계 사용하세요.</p>
+                    </div>
+                    <div class="tip-item scroll-animate">
+                        <span class="tip-number">4</span>
+                        <h4>윤리적 사용 원칙</h4>
+                        <p>AI를 사용할 때는 저작권, 개인정보보호, 편향성 등의 윤리적 고려사항을 항상 염두에 두고 책임감 있게 활용하세요.</p>
+                    </div>
+                    <div class="tip-item scroll-animate">
+                        <span class="tip-number">5</span>
+                        <h4>지속적인 업데이트</h4>
+                        <p>AI 기술은 빠르게 발전하고 있습니다. 새로운 기능과 업데이트를 지속적으로 확인하고 학습하여 최신 기술을 활용하세요.</p>
+                    </div>
+                    <div class="tip-item scroll-animate">
+                        <span class="tip-number">6</span>
+                        <h4>실무 적용 연습</h4>
+                        <p>이론적 지식보다는 실제 업무에 AI를 적용해보는 것이 중요합니다. 작은 프로젝트부터 시작하여 점진적으로 확장하세요.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title scroll-animate">AI의 핵심 기능</h2>
+                <div class="features-grid">
+                    <div class="feature-item scroll-animate">
+                        <span class="feature-icon">⚡</span>
+                        <h4>빠른 처리 속도</h4>
+                        <p>복잡한 작업을 몇 초 만에 완료하여 업무 효율성을 극대화합니다.</p>
+                    </div>
+                    <div class="feature-item scroll-animate">
+                        <span class="feature-icon">🎯</span>
+                        <h4>정확한 분석</h4>
+                        <p>대용량 데이터를 정확하게 분석하고 의미 있는 인사이트를 제공합니다.</p>
+                    </div>
+                    <div class="feature-item scroll-animate">
+                        <span class="feature-icon">🔄</span>
+                        <h4>자동화</h4>
+                        <p>반복적인 작업을 자동화하여 시간을 절약하고 실수를 줄입니다.</p>
+                    </div>
+                    <div class="feature-item scroll-animate">
+                        <span class="feature-icon">🧠</span>
+                        <h4>지능형 학습</h4>
+                        <p>사용 패턴을 학습하여 개인화된 서비스를 제공합니다.</p>
+                    </div>
+                    <div class="feature-item scroll-animate">
+                        <span class="feature-icon">🌐</span>
+                        <h4>24/7 가용성</h4>
+                        <p>언제든지 접근 가능하여 시간과 장소의 제약 없이 활용할 수 있습니다.</p>
+                    </div>
+                    <div class="feature-item scroll-animate">
+                        <span class="feature-icon">💡</span>
+                        <h4>창의적 솔루션</h4>
+                        <p>새로운 관점과 창의적인 아이디어를 제공하여 혁신을 촉진합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>AI 메뉴얼</h4>
+                    <p>AI와 함께하는 능률 레벨업을 위한 종합 가이드</p>
+                </div>
+                <div class="footer-section">
+                    <h4>빠른 링크</h4>
+                    <p><a href="#tools">AI 도구</a></p>
+                    <p><a href="#tips">활용 팁</a></p>
+                    <p><a href="#recommend">상황별 추천</a></p>
+                </div>
+                <div class="footer-section">
+                    <h4>문의하기</h4>
+                    <p>이메일: info@aimanual.com</p>
+                    <p>전화: 02-1234-5678</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AI 메뉴얼. 모든 권리 보유.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-animate').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Header background change on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+
+
+        // Add some interactive hover effects
+        document.querySelectorAll('.tool-card, .tip-item, .feature-item').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // --- Recommend Engine ---
+        const RECOMMENDER_RULES = [
+            // writing / editing
+            { tool: 'ChatGPT', domain: 'writing', tags: ['초안','요약','레벨링','교정'], score: (q) => scoreBy(q,{speed:1, quality:2}) },
+            { tool: 'Claude', domain: 'writing', tags: ['장문','논증','일관성'], score: (q) => scoreBy(q,{quality:3}) },
+            { tool: 'Grammarly', domain: 'writing', tags: ['문법','스타일','교정'], score: (q) => hasWord(q,'교정')?3:1 },
+
+            // translation
+            { tool: 'DeepL', domain: 'translation', tags: ['자연스러운 번역','고품질'], score: (q) => scoreBy(q,{quality:3}) },
+            { tool: 'Google Translate', domain: 'translation', tags: ['다국어','빠른 번역'], score: (q) => scoreBy(q,{speed:2}) },
+
+            // assessment
+            { tool: 'ChatGPT (문항)', domain: 'assessment', tags: ['문항','해설','난이도'], score: (q) => 2 + (includesAny(q,['문항','퀴즈','평가'])?2:0) },
+            { tool: 'Perplexity (문항 근거)', domain: 'assessment', tags: ['출처','근거','최신 정보'], score: (q) => includesAny(q,['근거','출처'])?4:1 },
+
+            // design / image
+            { tool: 'DALLE 3', domain: 'design', tags: ['사실적','제어 쉬움'], score: (q) => includesAny(q,['제품','사실적','사진'])?4:2 },
+            { tool: 'Midjourney', domain: 'design', tags: ['스타일','아트워크'], score: (q) => includesAny(q,['스타일','일러스트','표지'])?4:2 },
+            { tool: 'Stable Diffusion/Clipdrop', domain: 'design', tags: ['오픈소스','세밀 제어'], score: (q) => includesAny(q,['오픈소스','로컬','개인정보'])?4:1 },
+            { tool: 'Adobe Firefly', domain: 'design', tags: ['CC연동','편집'], score: (q) => includesAny(q,['포토샵','일러스트레이터','인디자인'])?4:1 },
+
+            // marketing
+            { tool: 'ChatGPT (마케팅 카피)', domain: 'marketing', tags: ['A/B','카피','세트 생성'], score: (q) => includesAny(q,['카피','캠페인','슬로건'])?4:2 },
+            { tool: 'Perplexity (리서치)', domain: 'marketing', tags: ['시장조사','경쟁분석'], score: (q) => includesAny(q,['시장','경쟁','조사','트렌드'])?4:1 },
+
+            // video
+            { tool: 'Runway', domain: 'video', tags: ['모션','확장','자막'], score: (q) => includesAny(q,['영상','클립','모션'])?4:2 },
+
+            // search / research
+            { tool: 'Perplexity', domain: 'search', tags: ['출처','최신성'], score: (q) => scoreBy(q,{evidence:3, quality:1}) }
+        ];
+
+        function includesAny(text, words){
+            if (!text || typeof text !== 'string') return false;
+            return words.some(w => text.toLowerCase().includes(w.toLowerCase()));
+        }
+
+        function hasWord(text, word){
+            if (!text || typeof text !== 'string') return false;
+            return text.toLowerCase().includes(word.toLowerCase());
+        }
+
+        function scoreBy(query, prefs){
+            let s = 1;
+            if (prefs.speed) s += (query.prefs.speed?prefs.speed:0);
+            if (prefs.quality) s += (query.prefs.quality?prefs.quality:0);
+            if (prefs.evidence) s += (query.prefs.evidence?prefs.evidence:0);
+            return s;
+        }
+
+        function buildQuery(){
+            const goal = document.getElementById('goal')?.value?.trim() || '';
+            const domain = document.getElementById('domain')?.value || '';
+            const constraints = document.getElementById('constraints')?.value || '';
+            const keywords = document.getElementById('keywords')?.value?.trim() || '';
+            const context = document.getElementById('context')?.value?.trim() || '';
+            const text = [goal, keywords, context].filter(Boolean).join(' ').slice(0, 2000);
+            const prefs = {
+                speed: constraints === 'speed',
+                quality: constraints === 'quality',
+                evidence: constraints === 'evidence',
+                free: constraints === 'free',
+                privacy: constraints === 'privacy'
+            };
+            return { text, domain, prefs };
+        }
+
+        function recommend(){
+            const q = buildQuery();
+            const scored = RECOMMENDER_RULES
+                .filter(r => !q.domain || r.domain === q.domain)
+                .map(r => ({
+                    tool: r.tool,
+                    domain: r.domain,
+                    tags: r.tags,
+                    score: (typeof r.score === 'function') ? r.score({
+                        text: q.text,
+                        prefs: q.prefs
+                    }) + (includesAny(q.text, r.tags)?2:0) : 1
+                }))
+                .sort((a,b) => b.score - a.score)
+                .slice(0,6);
+
+            renderChips(q);
+            renderResults(scored);
+        }
+
+        function renderChips(q){
+            const chips = [];
+            if (q.domain) chips.push(`<span class="tag">분야: ${q.domain}</span>`);
+            for (const [k,v] of Object.entries(q.prefs)) if (v) chips.push(`<span class="tag">${k}</span>`);
+            document.getElementById('recChips').innerHTML = chips.join('');
+        }
+
+        function renderResults(items){
+            const container = document.getElementById('recResults');
+            if (!items.length){
+                container.innerHTML = '<div class="rec-card"><p>조건에 맞는 추천을 찾지 못했어요. 입력을 더 구체화해 주세요.</p></div>';
+                return;
+            }
+            container.innerHTML = items.map(item => `
+                <div class="rec-card">
+                    <h4>${item.tool}</h4>
+                    <p style="margin:.25rem 0 .5rem;color:#4f46e5">추천 점수: ${item.score.toFixed(1)}</p>
+                    <p>${item.tags.map(t=>`<span class=\"tag\">${t}</span>`).join(' ')}</p>
+                </div>
+            `).join('');
+        }
+
+        // Enhanced recommend function with OpenAI integration
+        async function recommendWithAI(){
+            console.log('recommendWithAI 함수 호출됨');
+            
+            const btn = document.getElementById('btnRecommend');
+            const btnText = document.getElementById('btnText');
+            const btnLoading = document.getElementById('btnLoading');
+            
+            if (!btn) {
+                console.error('추천 버튼을 찾을 수 없습니다');
+                return;
+            }
+            
+            console.log('버튼 상태 변경 시작');
+            
+            // 버튼 비활성화 및 로딩 상태
+            btn.disabled = true;
+            if (btnText) btnText.style.display = 'none';
+            if (btnLoading) btnLoading.style.display = 'inline';
+            
+            try {
+                // 먼저 로컬 추천 실행
+                recommend();
+                
+                const q = buildQuery();
+                const state = loadApiState();
+                
+                // 환경 힌트 표시
+                try {
+                    const isFile = location.protocol === 'file:';
+                    document.getElementById('apiAlert').classList.toggle('show', isFile);
+                } catch {}
+                
+                if (!state.key) {
+                    console.log('OpenAI API 키가 설정되지 않았습니다. 로컬 추천만 표시됩니다.');
+                    return;
+                }
+                
+                const container = document.getElementById('recResults');
+                const loadingCard = document.createElement('div');
+                loadingCard.className = 'rec-card';
+                loadingCard.innerHTML = '<p style="color:#667eea">🤖 AI가 추가 분석 중...</p>';
+                container.prepend(loadingCard);
+                
+                try {
+                    const prompt = `다음 요구사항을 분석해서 가장 적합한 AI 도구 3-5개를 추천해주세요. 각 도구마다 구체적인 사용법과 프롬프트 예시를 포함해서 JSON 형태로 답변해주세요.
+
+요구사항: ${q.text}
+분야: ${q.domain || '미지정'}
+제약사항: ${Object.entries(q.prefs).filter(([k,v]) => v).map(([k]) => k).join(', ') || '없음'}
+
+응답 형식:
+[
+  {
+    "tool": "도구명",
+    "reason": "추천 이유",
+    "prompt": "구체적인 프롬프트 예시",
+    "tips": "사용 팁"
+  }
+]`;
+
+                    const model = state.model || 'gemini-1.5-flash';
+                    const reply = await callGemini(model, prompt);
+                    const parsed = safeJsonArray(reply);
+                    
+                    if (parsed?.length){
+                        const aiCards = parsed.slice(0, state.count || 5).map(item => `
+                            <div class="rec-card" style="border-left: 4px solid #667eea; background: linear-gradient(135deg, #f8f9ff, #ffffff);">
+                                <h4>🤖 ${escapeHtml(item.tool || item.name || 'AI 추천 도구')}</h4>
+                                <p style="color:#4f46e5; margin: 0.5rem 0;"><strong>추천 이유:</strong> ${escapeHtml(item.reason || item.why || '')}</p>
+                                <p style="margin: 0.5rem 0;"><span class="tag">💡 프롬프트 예시</span></p>
+                                <p style="background: #f0f2ff; padding: 0.75rem; border-radius: 8px; font-family: monospace; font-size: 0.9rem; margin: 0.5rem 0;">${escapeHtml(item.prompt || '')}</p>
+                                ${item.tips ? `<p style="color:#666; font-size: 0.9rem; margin: 0.5rem 0;"><strong>💡 팁:</strong> ${escapeHtml(item.tips)}</p>` : ''}
+                            </div>
+                        `).join('');
+                        container.insertAdjacentHTML('beforeend', aiCards);
+                    } else {
+                        container.insertAdjacentHTML('beforeend', '<div class="rec-card"><p>AI 분석 결과를 파싱하지 못했습니다. 다시 시도해주세요.</p></div>');
+                    }
+                } catch (e) {
+                    const msg = (e && e.message) ? e.message : String(e);
+                    let help = '';
+                    if (msg.includes('Failed to fetch') || msg.includes('CORS')) {
+                        help = ' (브라우저 CORS 이슈일 수 있어요. 로컬 서버에서 http://localhost 로 열어주세요.)';
+                } else if (msg.includes('401') || msg.toLowerCase().includes('unauthorized')) {
+                    help = ' (서버 설정을 확인하세요. 백엔드 API가 정상적으로 작동하는지 확인해주세요.)';
+                    } else if (msg.includes('429')) {
+                        help = ' (API 사용량 한도를 초과했습니다. 잠시 후 다시 시도해주세요.)';
+                    }
+                    container.insertAdjacentHTML('beforeend', `<div class="rec-card" style="border-left: 4px solid #ff6b6b;"><p style="color:#ff6b6b">❌ Gemini 호출 실패: ${escapeHtml(msg)}${help}</p></div>`);
+                } finally {
+                    loadingCard.remove();
+                }
+            } finally {
+                // 버튼 상태 복원
+                console.log('버튼 상태 복원 중');
+                btn.disabled = false;
+                if (btnText) btnText.style.display = 'inline';
+                if (btnLoading) btnLoading.style.display = 'none';
+                console.log('recommendWithAI 함수 완료');
+            }
+        }
+
+        // 간단한 테스트 함수
+        function testRecommend() {
+            console.log('테스트 추천 함수 호출됨');
+            alert('버튼이 정상적으로 작동합니다!');
+            
+            // 간단한 로컬 추천 테스트
+            const container = document.getElementById('recResults');
+            if (container) {
+                container.innerHTML = `
+                    <div class="rec-card">
+                        <h4>테스트 추천</h4>
+                        <p>버튼이 정상적으로 작동합니다!</p>
+                        <p><span class="tag">테스트</span> <span class="tag">성공</span></p>
+                    </div>
+                `;
+            }
+        }
+
+        // Event listeners - DOM이 완전히 로드된 후 실행
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('=== DOM 로드 완료, 이벤트 리스너 등록 시작 ===');
+            
+            const btnRecommend = document.getElementById('btnRecommend');
+            const btnClear = document.getElementById('btnClear');
+            
+            console.log('btnRecommend 요소:', btnRecommend);
+            console.log('btnClear 요소:', btnClear);
+            console.log('recommendWithAI 함수 존재 여부:', typeof recommendWithAI);
+            console.log('testRecommend 함수 존재 여부:', typeof testRecommend);
+            
+            if (btnRecommend) {
+                btnRecommend.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('추천 버튼 클릭됨!');
+                    
+                    // 실제 추천 함수 호출
+                    if (typeof recommendWithAI === 'function') {
+                        recommendWithAI();
+                    } else {
+                        console.error('recommendWithAI 함수가 정의되지 않았습니다');
+                        testRecommend(); // 백업으로 테스트 함수 호출
+                    }
+                });
+                console.log('추천 버튼 이벤트 리스너 등록됨');
+                
+                // 간단한 테스트를 위한 더블클릭 이벤트
+                btnRecommend.addEventListener('dblclick', function() {
+                    console.log('추천 버튼 더블클릭됨 - 테스트용');
+                    testRecommend();
+                });
+            } else {
+                console.error('btnRecommend 요소를 찾을 수 없습니다');
+            }
+            
+            if (btnClear) {
+                btnClear.addEventListener('click', () => {
+                    document.getElementById('recForm').reset();
+                    document.getElementById('recChips').innerHTML = '';
+                    document.getElementById('recResults').innerHTML = '';
+                });
+            }
+        });
+
+        // --- Settings Modal & OpenAI Integration ---
+        let modal;
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            modal = createSettingsModal();
+            document.body.appendChild(modal);
+            
+            const openSettingsBtn = document.getElementById('openSettings');
+            if (openSettingsBtn) {
+                console.log('설정 버튼 찾음:', openSettingsBtn);
+                openSettingsBtn.addEventListener('click', (e)=>{ 
+                    e.preventDefault(); 
+                    console.log('설정 버튼 클릭됨');
+                    modal.classList.add('open'); 
+                });
+                
+                // 추가 이벤트 리스너 (더블클릭으로도 열기)
+                openSettingsBtn.addEventListener('dblclick', (e)=>{ 
+                    e.preventDefault(); 
+                    console.log('설정 버튼 더블클릭됨');
+                    modal.classList.add('open'); 
+                });
+            } else {
+                console.error('설정 버튼을 찾을 수 없습니다');
+            }
+        });
+
+        function createSettingsModal(){
+            const m = document.createElement('div');
+            m.className = 'modal';
+            m.innerHTML = `
+                <div class="modal-card">
+                    <div class="modal-header">
+                        <h3>API 설정</h3>
+                        <button class="close-btn" id="closeSettings">×</button>
+                    </div>
+                    <div class="hint">API 키는 서버에서 안전하게 관리됩니다. 별도 설정이 필요하지 않습니다.</div>
+                    <div style="height:10px"></div>
+                    <div class="row">
+                        <div style="flex:1">
+                            <label>모델</label>
+                            <select id="geminiModel" class="select">
+                                <option value="gemini-1.5-flash">gemini-1.5-flash (빠름/저비용)</option>
+                                <option value="gemini-1.5-pro">gemini-1.5-pro (고품질)</option>
+                            </select>
+                        </div>
+                        <div style="flex:1">
+                            <label>최대 제안 수</label>
+                            <select id="openaiCount" class="select">
+                                <option>3</option>
+                                <option selected>5</option>
+                                <option>8</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div style="height:12px"></div>
+                    <div class="rec-actions">
+                        <button class="demo-button" id="saveSettings">저장</button>
+                        <button class="btn btn-secondary" id="testCall">테스트 호출</button>
+                    </div>
+                    <div class="hint" id="settingsMsg"></div>
+                </div>`;
+            m.querySelector('#closeSettings').onclick = ()=> m.classList.remove('open');
+            m.addEventListener('click', (e)=>{ if(e.target===m) m.classList.remove('open'); });
+            // init from session
+            const state = loadApiState();
+            m.querySelector('#geminiModel').value = state.model || 'gemini-1.5-flash';
+            m.querySelector('#geminiCount').value = String(state.count || 5);
+            m.querySelector('#saveSettings').onclick = ()=> saveApiState(m);
+            m.querySelector('#testCall').onclick = ()=> testGemini(m);
+            return m;
+        }
+
+        function maskKey(k){ if(!k) return ''; return k.slice(0,4) + '••••' + k.slice(-4); }
+        function loadApiState(){
+            try { 
+                // 백엔드 API 사용으로 API 키 불필요
+                const defaultState = {
+                    model: 'gemini-1.5-flash',
+                    count: 5
+                };
+                
+                const savedState = JSON.parse(sessionStorage.getItem('geminiState')||'{}');
+                return { ...defaultState, ...savedState };
+            } catch { 
+                return {
+                    model: 'gemini-1.5-flash',
+                    count: 5
+                };
+            }
+        }
+        function saveApiState(m){
+            const model = m.querySelector('#geminiModel').value;
+            const count = parseInt(m.querySelector('#geminiCount').value,10)||5;
+            sessionStorage.setItem('geminiState', JSON.stringify({ model, count }));
+            m.querySelector('#settingsMsg').textContent = '저장되었습니다.';
+            setTimeout(()=> m.querySelector('#settingsMsg').textContent = '', 1500);
+        }
+
+        async function testGemini(m){
+            const msg = m.querySelector('#settingsMsg');
+            try {
+                msg.textContent = '테스트 중...';
+                const res = await callGemini('gemini-1.5-flash', '한국어로 한 문장 인사해줘.');
+                msg.textContent = '성공: ' + (res?.trim().slice(0,40) || 'ok');
+            } catch (e) {
+                msg.textContent = '실패: ' + (e?.message || e);
+            }
+        }
+
+        async function callGemini(model, prompt){
+            // 백엔드 API를 통해 안전하게 호출
+            const response = await fetch('/api/generate', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ prompt, model })
+            });
+            
+            if (!response.ok) throw new Error('서버 응답 오류: ' + response.status);
+            const data = await response.json();
+            
+            if (!data.success) throw new Error(data.error);
+            return data.reply;
+        }
+
+
+        function safeJsonArray(text){
+            try { return JSON.parse(text); } catch {}
+            // 간혹 코드블록 형태로 오는 경우 추출
+            const match = text.match(/\[([\s\S]*)\]/);
+            try { return match ? JSON.parse(match[0]) : null; } catch { return null; }
+        }
+        function escapeHtml(s){ return (s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c])); }
+        
+        // API 키 보안 경고 표시
+        function showSecurityWarning() {
+            if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+                const warning = document.createElement('div');
+                warning.style.cssText = `
+                    position: fixed; top: 0; left: 0; right: 0; z-index: 10000;
+                    background: #ff6b6b; color: white; padding: 10px; text-align: center;
+                    font-size: 14px; font-weight: bold;
+                `;
+                warning.innerHTML = '⚠️ 프로덕션 환경에서는 API 키가 노출될 수 있습니다. 백엔드 서버 구축을 권장합니다.';
+                document.body.prepend(warning);
+                
+                setTimeout(() => warning.remove(), 10000);
+            }
+        }
+        
+        // AI 체험하기 함수
+        async function generateDemoText() {
+            const input = document.getElementById('demoInput').value.trim();
+            const resultDiv = document.getElementById('demoResult');
+            const button = document.getElementById('demoButton');
+            const btnText = document.getElementById('demoBtnText');
+            const btnLoading = document.getElementById('demoBtnLoading');
+            
+            if (!input) {
+                resultDiv.innerHTML = '<p style="color: #ff6b6b;">💡 질문이나 요청을 입력해주세요!</p>';
+                return;
+            }
+
+            // 버튼 상태 변경
+            button.disabled = true;
+            btnText.style.display = 'none';
+            btnLoading.style.display = 'inline';
+            
+            // 로딩 메시지 표시
+            resultDiv.innerHTML = '<p style="color: #667eea;">🤖 AI가 답변을 생성하고 있습니다...</p>';
+            
+            try {
+                const state = loadApiState();
+                
+                // API 키가 이미 설정되어 있으므로 이 부분은 실행되지 않음
+                if (!state.key) {
+                    resultDiv.innerHTML = `
+                        <div style="color: #ff6b6b; padding: 1rem; background: #fff5f5; border-radius: 8px; border-left: 4px solid #ff6b6b;">
+                            <p><strong>⚠️ API 키 오류</strong></p>
+                            <p>API 키에 문제가 있습니다. 페이지를 새로고침해주세요.</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                const prompt = `다음 질문이나 요청에 대해 친근하고 도움이 되는 답변을 한국어로 작성해주세요. 답변은 구체적이고 실용적인 정보를 포함하여 작성해주세요.
+
+질문/요청: ${input}`;
+
+                const model = state.model || 'gemini-1.5-flash';
+                const reply = await callGemini(model, prompt);
+                
+                if (reply && reply.trim()) {
+                    resultDiv.innerHTML = `
+                        <div style="background: linear-gradient(135deg, #f8f9ff, #ffffff); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #667eea; box-shadow: 0 2px 10px rgba(102, 126, 234, 0.1);">
+                            <h4 style="color: #4f46e5; margin: 0 0 1rem 0;">🤖 AI 답변</h4>
+                            <div style="line-height: 1.6; margin: 0; color: #333; white-space: pre-wrap;">${escapeHtml(reply)}</div>
+                            <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e5e7eb;">
+                                <small style="color: #666;">💡 다른 질문도 시도해보세요!</small>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    resultDiv.innerHTML = '<p style="color: #ff6b6b;">AI 응답을 받지 못했습니다. 다시 시도해주세요.</p>';
+                }
+                
+            } catch (e) {
+                const msg = (e && e.message) ? e.message : String(e);
+                let help = '';
+                
+                if (msg.includes('Failed to fetch') || msg.includes('CORS')) {
+                    help = ' (CORS 오류: 로컬 서버에서 실행해주세요)';
+                } else if (msg.includes('401') || msg.toLowerCase().includes('unauthorized')) {
+                    help = ' (API 키를 확인해주세요)';
+                } else if (msg.includes('429')) {
+                    help = ' (API 사용량 한도 초과)';
+                }
+                
+                resultDiv.innerHTML = `
+                    <div style="color: #ff6b6b; padding: 1rem; background: #fff5f5; border-radius: 8px; border-left: 4px solid #ff6b6b;">
+                        <p><strong>❌ 오류 발생</strong></p>
+                        <p>${escapeHtml(msg)}${help}</p>
+                    </div>
+                `;
+            } finally {
+                // 버튼 상태 복원
+                button.disabled = false;
+                btnText.style.display = 'inline';
+                btnLoading.style.display = 'none';
+            }
+        }
+
+        // AI 체험하기 이벤트 리스너
+        document.addEventListener('DOMContentLoaded', function() {
+            const demoInput = document.getElementById('demoInput');
+            const demoButton = document.getElementById('demoButton');
+            
+            if (demoInput) {
+                demoInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        generateDemoText();
+                    }
+                });
+            }
+            
+            if (demoButton) {
+                demoButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    generateDemoText();
+                });
+            }
+        });
+
+        // 페이지 로드 시 보안 경고 표시
+        document.addEventListener('DOMContentLoaded', showSecurityWarning);
+        
+        // 설정 버튼 직접 이벤트 리스너 (백업)
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                const settingsBtn = document.getElementById('openSettings');
+                if (settingsBtn) {
+                    console.log('설정 버튼 백업 이벤트 리스너 등록');
+                    settingsBtn.onclick = function(e) {
+                        e.preventDefault();
+                        console.log('설정 버튼 직접 클릭됨');
+                        const modal = document.querySelector('.modal');
+                        if (modal) {
+                            modal.classList.add('open');
+                        }
+                    };
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

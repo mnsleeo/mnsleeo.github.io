@@ -1,0 +1,13 @@
+{
+  "name": "ai-manual",
+  "version": "1.0.0",
+  "description": "AI Manual - AI와 함께하는 능률 레벨업",
+  "main": "AI manual.html",
+  "scripts": {
+    "build": "echo 'Static site - no build needed'",
+    "start": "python3 -m http.server 8000"
+  },
+  "keywords": ["ai", "manual", "education", "korean"],
+  "author": "AI Manual Team",
+  "license": "MIT"
+}
