@@ -28,6 +28,8 @@
         /* Header */
         .header {
             background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
             position: fixed;
             top: 0;
             left: 0;
@@ -95,6 +97,7 @@
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
             animation: fadeInUp 1s ease-out;
         }
 
@@ -108,21 +111,20 @@
         .cta-button {
             display: inline-block;
             padding: 15px 30px;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            background: linear-gradient(135deg, #b3ff6b, #52ee52);
             color: white;
             text-decoration: none;
             border-radius: 50px;
             font-weight: bold;
             font-size: 1.1rem;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(240, 147, 251, 0.4);
+            box-shadow: 0 5px 15px rgba(71, 87, 177, 0.4);
             animation: fadeInUp 1s ease-out 0.4s both;
         }
 
         .cta-button:hover {
-            background: linear-gradient(135deg, #f5576c 0%, #f093fb 100%);
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(245, 87, 108, 0.6);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.6);
         }
 
         /* Main Content */
@@ -376,6 +378,38 @@
             box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
         }
 
+        .clear-button {
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            color: #6c757d;
+            border: 2px solid #dee2e6;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .clear-button:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #e9ecef, #dee2e6);
+            border-color: #adb5bd;
+            color: #495057;
+            box-shadow: 0 5px 15px rgba(108, 117, 125, 0.2);
+        }
+
+        .clear-icon {
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .clear-button:hover .clear-icon {
+            transform: rotate(180deg);
+        }
+
         .demo-result {
             margin-top: 2rem;
             padding: 1.5rem;
@@ -446,37 +480,6 @@
 
         .rec-card h4 { margin-bottom: .5rem; }
         .rec-card p { color: #666; font-size: .95rem; }
-
-        /* Button Styles */
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            text-align: center;
-        }
-
-        .btn-secondary {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-            box-shadow: 0 4px 15px rgba(240, 147, 251, 0.3);
-        }
-
-        .btn-secondary:hover {
-            background: linear-gradient(135deg, #f5576c 0%, #f093fb 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(245, 87, 108, 0.4);
-        }
-
-        .btn-secondary:active {
-            transform: translateY(0);
-            box-shadow: 0 2px 8px rgba(245, 87, 108, 0.3);
-        }
 
         @media (max-width: 768px) {
             .rec-form { grid-template-columns: 1fr; }
@@ -570,93 +573,7 @@
             animation: fadeInUp 0.8s ease-out;
         }
 
-        /* Demo Section Styles */
-        .demo-section {
-            background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
-            padding: 80px 0;
-        }
-
-        .demo-container {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .demo-container h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: #2d3748;
-        }
-
-        .demo-form {
-            margin-bottom: 2rem;
-        }
-
-        .demo-textarea {
-            width: 100%;
-            min-height: 120px;
-            padding: 1rem;
-            border: 2px solid #e2e8f0;
-            border-radius: 12px;
-            font-size: 1rem;
-            font-family: inherit;
-            resize: vertical;
-            transition: all 0.3s ease;
-            margin-bottom: 1rem;
-        }
-
-        .demo-textarea:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        }
-
-        .demo-button {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-        }
-
-        .demo-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
-        }
-
-        .demo-button:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .demo-result {
-            background: white;
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            border: 1px solid #e2e8f0;
-            text-align: left;
-        }
-
-        .demo-placeholder {
-            text-align: center;
-            color: #666;
-        }
-
-        .demo-placeholder ul {
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .demo-placeholder li {
-            margin-bottom: 0.5rem;
-        }
+        /* Responsive Design */
         @media (max-width: 768px) {
             .nav {
                 flex-direction: column;
@@ -717,7 +634,6 @@
                 <li><a href="#marketing">마케팅</a></li>
                 <li><a href="#tools">AI 도구</a></li>
                 <li><a href="#recommend">상황별 추천</a></li>
-                <li><a href="#demo">체험하기</a></li>
                 <li><a href="#tips">활용 팁</a></li>
                 <li><a href="#contact">문의</a></li>
                 <li><a href="#" id="openSettings">설정</a></li>
@@ -768,10 +684,12 @@
                                 <span id="btnText">🤖 AI 추천 받기</span>
                                 <span id="btnLoading" style="display: none;">⏳ 분석 중...</span>
                             </button>
-                            <button type="button" class="btn btn-secondary" id="btnClear">초기화</button>
+                            <button type="button" class="clear-button" id="btnClear">
+                                <span class="clear-icon">🔄</span>
+                                <span>초기화</span>
+                            </button>
                         </div>
                     </form>
-                    <div id="apiAlert" class="alert">브라우저에서 파일을 직접 연다면(file://) OpenAI가 CORS로 차단할 수 있습니다. 간단 서버에서 `http://localhost`로 열어주세요.</div>
                     <div id="recChips" style="margin-bottom: .75rem"></div>
                     <div id="recResults" class="rec-result"></div>
                 </div>
@@ -970,76 +888,33 @@
                     </div>
                     <div class="tool-card scroll-animate">
                         <span class="tool-icon">🎨</span>
-                        <h3>DALL-E</h3>
+                        <h3>DALL-E 3</h3>
                         <p>텍스트 설명을 바탕으로 창의적이고 독창적인 이미지를 생성하는 AI</p>
                         <a href="https://openai.com/dall-e-3" target="_blank" class="tool-link">자세히 보기</a>
                     </div>
                     <div class="tool-card scroll-animate">
-                        <span class="tool-icon">🤖</span>
-                        <h3>Claude</h3>
-                        <p>Anthropic의 대화형 AI로 창작, 분석, 코딩 등 다양한 작업 지원</p>
-                        <a href="https://claude.ai" target="_blank" class="tool-link">자세히 보기</a>
+                        <span class="tool-icon">🔍</span>
+                        <h3>Perplexity AI</h3>
+                        <p>출처가 있는 정확한 정보 검색과 질문 답변을 제공하는 AI 검색 엔진</p>
+                        <a href="https://perplexity.ai" target="_blank" class="tool-link">자세히 보기</a>
                     </div>
                     <div class="tool-card scroll-animate">
                         <span class="tool-icon">🎨</span>
                         <h3>Midjourney</h3>
-                        <p>텍스트 프롬프트로 아름다운 아트워크와 이미지를 생성하는 AI</p>
+                        <p>예술적이고 스타일리시한 이미지를 생성하는 고품질 AI 이미지 생성 도구</p>
                         <a href="https://www.midjourney.com" target="_blank" class="tool-link">자세히 보기</a>
                     </div>
                     <div class="tool-card scroll-animate">
-                        <span class="tool-icon">🔍</span>
-                        <h3>Perplexity AI</h3>
-                        <p>실시간 정보 검색과 출처가 명확한 답변을 제공하는 AI 검색</p>
-                        <a href="https://perplexity.ai" target="_blank" class="tool-link">자세히 보기</a>
-                    </div>
-                    <div class="tool-card scroll-animate">
-                        <span class="tool-icon">📝</span>
-                        <h3>Grammarly</h3>
-                        <p>문법 검사, 스타일 개선, 톤 조절을 도와주는 AI 글쓰기 도구</p>
-                        <a href="https://www.grammarly.com" target="_blank" class="tool-link">자세히 보기</a>
-                    </div>
-                    <div class="tool-card scroll-animate">
-                        <span class="tool-icon">🎵</span>
-                        <h3>ElevenLabs</h3>
-                        <p>자연스러운 음성 합성과 음성 복제를 제공하는 AI 음성 도구</p>
-                        <a href="https://elevenlabs.io" target="_blank" class="tool-link">자세히 보기</a>
+                        <span class="tool-icon">✍️</span>
+                        <h3>Claude</h3>
+                        <p>장문 텍스트 처리와 논리적 분석에 특화된 Anthropic의 대화형 AI</p>
+                        <a href="https://claude.ai" target="_blank" class="tool-link">자세히 보기</a>
                     </div>
                     <div class="tool-card scroll-animate">
                         <span class="tool-icon">🎬</span>
                         <h3>Runway</h3>
-                        <p>AI 기반 영상 편집과 생성 도구로 크리에이티브 콘텐츠 제작</p>
+                        <p>AI 기반 영상 편집과 생성 도구로 모션 그래픽과 비디오 효과 제작</p>
                         <a href="https://runwayml.com" target="_blank" class="tool-link">자세히 보기</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- AI Demo Section -->
-        <section id="demo" class="demo-section">
-            <div class="container">
-                <h2 class="section-title scroll-animate">AI 체험하기</h2>
-                <div class="demo-container scroll-animate">
-                    <h3>🤖 AI와 대화해보세요</h3>
-                    <p style="margin-bottom: 2rem; color: #666;">아래 입력창에 질문이나 요청을 입력하고 AI의 응답을 확인해보세요.</p>
-                    
-                    <div class="demo-form">
-                        <textarea class="demo-textarea" id="demoInput" placeholder="예: 인공지능의 미래에 대해 설명해줘, 창의적인 글쓰기 팁을 알려줘, 비즈니스 전략을 수립하는 방법은?"></textarea>
-                        <button class="demo-button" id="demoButton">
-                            <span id="demoBtnText">✨ AI에게 질문하기</span>
-                            <span id="demoBtnLoading" style="display: none;">⏳ AI가 답변 중...</span>
-                        </button>
-                    </div>
-                    
-                    <div class="demo-result" id="demoResult">
-                        <div class="demo-placeholder">
-                            <p>💡 <strong>사용법:</strong></p>
-                            <ul style="text-align: left; margin: 1rem 0;">
-                                <li>위 입력창에 질문이나 요청을 입력하세요</li>
-                                <li>"AI에게 질문하기" 버튼을 클릭하세요</li>
-                                <li>AI의 답변을 확인하세요</li>
-                            </ul>
-                            <p><em>※ API 키가 자동으로 설정되어 있습니다. 바로 사용하실 수 있습니다!</em></p>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -1137,7 +1012,6 @@
                     <h4>빠른 링크</h4>
                     <p><a href="#tools">AI 도구</a></p>
                     <p><a href="#tips">활용 팁</a></p>
-                    <p><a href="#recommend">상황별 추천</a></p>
                 </div>
                 <div class="footer-section">
                     <h4>문의하기</h4>
@@ -1345,7 +1219,7 @@
                 // 환경 힌트 표시
                 try {
                     const isFile = location.protocol === 'file:';
-                    document.getElementById('apiAlert').classList.toggle('show', isFile);
+                    // CORS 경고 제거됨
                 } catch {}
                 
                 if (!state.key) {
@@ -1376,8 +1250,8 @@
   }
 ]`;
 
-                    const model = state.model || 'gemini-1.5-flash';
-                    const reply = await callGemini(model, prompt);
+                    const model = state.model || 'gpt-4o-mini';
+                    const reply = await callOpenAI(model, prompt);
                     const parsed = safeJsonArray(reply);
                     
                     if (parsed?.length){
@@ -1397,14 +1271,12 @@
                 } catch (e) {
                     const msg = (e && e.message) ? e.message : String(e);
                     let help = '';
-                    if (msg.includes('Failed to fetch') || msg.includes('CORS')) {
-                        help = ' (브라우저 CORS 이슈일 수 있어요. 로컬 서버에서 http://localhost 로 열어주세요.)';
-                } else if (msg.includes('401') || msg.toLowerCase().includes('unauthorized')) {
-                    help = ' (서버 설정을 확인하세요. 백엔드 API가 정상적으로 작동하는지 확인해주세요.)';
+                    if (msg.includes('401') || msg.toLowerCase().includes('unauthorized')) {
+                        help = ' (API 키를 확인하세요. 설정에서 sk-로 시작하는 키를 저장해야 합니다.)';
                     } else if (msg.includes('429')) {
                         help = ' (API 사용량 한도를 초과했습니다. 잠시 후 다시 시도해주세요.)';
                     }
-                    container.insertAdjacentHTML('beforeend', `<div class="rec-card" style="border-left: 4px solid #ff6b6b;"><p style="color:#ff6b6b">❌ Gemini 호출 실패: ${escapeHtml(msg)}${help}</p></div>`);
+                    container.insertAdjacentHTML('beforeend', `<div class="rec-card" style="border-left: 4px solid #ff6b6b;"><p style="color:#ff6b6b">❌ OpenAI 호출 실패: ${escapeHtml(msg)}${help}</p></div>`);
                 } finally {
                     loadingCard.remove();
                 }
@@ -1490,21 +1362,10 @@
             
             const openSettingsBtn = document.getElementById('openSettings');
             if (openSettingsBtn) {
-                console.log('설정 버튼 찾음:', openSettingsBtn);
                 openSettingsBtn.addEventListener('click', (e)=>{ 
                     e.preventDefault(); 
-                    console.log('설정 버튼 클릭됨');
                     modal.classList.add('open'); 
                 });
-                
-                // 추가 이벤트 리스너 (더블클릭으로도 열기)
-                openSettingsBtn.addEventListener('dblclick', (e)=>{ 
-                    e.preventDefault(); 
-                    console.log('설정 버튼 더블클릭됨');
-                    modal.classList.add('open'); 
-                });
-            } else {
-                console.error('설정 버튼을 찾을 수 없습니다');
             }
         });
 
@@ -1517,14 +1378,16 @@
                         <h3>API 설정</h3>
                         <button class="close-btn" id="closeSettings">×</button>
                     </div>
-                    <div class="hint">API 키는 서버에서 안전하게 관리됩니다. 별도 설정이 필요하지 않습니다.</div>
+                    <label>OpenAI API Key</label>
+                    <input id="openaiKey" class="input" type="password" placeholder="sk-..." />
+                    <div class="hint">키는 browser sessionStorage에만 저장됩니다.</div>
                     <div style="height:10px"></div>
                     <div class="row">
                         <div style="flex:1">
                             <label>모델</label>
-                            <select id="geminiModel" class="select">
-                                <option value="gemini-1.5-flash">gemini-1.5-flash (빠름/저비용)</option>
-                                <option value="gemini-1.5-pro">gemini-1.5-pro (고품질)</option>
+                            <select id="openaiModel" class="select">
+                                <option value="gpt-4o-mini">gpt-4o-mini (빠름/저비용)</option>
+                                <option value="gpt-4o">gpt-4o (고품질)</option>
                             </select>
                         </div>
                         <div style="flex:1">
@@ -1547,63 +1410,58 @@
             m.addEventListener('click', (e)=>{ if(e.target===m) m.classList.remove('open'); });
             // init from session
             const state = loadApiState();
-            m.querySelector('#geminiModel').value = state.model || 'gemini-1.5-flash';
-            m.querySelector('#geminiCount').value = String(state.count || 5);
+            if (state.key) m.querySelector('#openaiKey').value = maskKey(state.key);
+            m.querySelector('#openaiModel').value = state.model || 'gpt-4o-mini';
+            m.querySelector('#openaiCount').value = String(state.count || 5);
             m.querySelector('#saveSettings').onclick = ()=> saveApiState(m);
-            m.querySelector('#testCall').onclick = ()=> testGemini(m);
+            m.querySelector('#testCall').onclick = ()=> testOpenAI(m);
             return m;
         }
 
         function maskKey(k){ if(!k) return ''; return k.slice(0,4) + '••••' + k.slice(-4); }
         function loadApiState(){
-            try { 
-                // 백엔드 API 사용으로 API 키 불필요
-                const defaultState = {
-                    model: 'gemini-1.5-flash',
-                    count: 5
-                };
-                
-                const savedState = JSON.parse(sessionStorage.getItem('geminiState')||'{}');
-                return { ...defaultState, ...savedState };
-            } catch { 
-                return {
-                    model: 'gemini-1.5-flash',
-                    count: 5
-                };
-            }
+            try { return JSON.parse(sessionStorage.getItem('apiState')||'{}'); } catch { return {}; }
         }
         function saveApiState(m){
-            const model = m.querySelector('#geminiModel').value;
-            const count = parseInt(m.querySelector('#geminiCount').value,10)||5;
-            sessionStorage.setItem('geminiState', JSON.stringify({ model, count }));
+            const raw = m.querySelector('#openaiKey').value.trim();
+            const key = raw.startsWith('sk-') ? raw : loadApiState().key || '';
+            const model = m.querySelector('#openaiModel').value;
+            const count = parseInt(m.querySelector('#openaiCount').value,10)||5;
+            sessionStorage.setItem('apiState', JSON.stringify({ key, model, count }));
             m.querySelector('#settingsMsg').textContent = '저장되었습니다.';
             setTimeout(()=> m.querySelector('#settingsMsg').textContent = '', 1500);
         }
 
-        async function testGemini(m){
+        async function testOpenAI(m){
             const msg = m.querySelector('#settingsMsg');
             try {
                 msg.textContent = '테스트 중...';
-                const res = await callGemini('gemini-1.5-flash', '한국어로 한 문장 인사해줘.');
+                const res = await callOpenAI('gpt-4o-mini', '한국어로 한 문장 인사해줘.');
                 msg.textContent = '성공: ' + (res?.trim().slice(0,40) || 'ok');
             } catch (e) {
                 msg.textContent = '실패: ' + (e?.message || e);
             }
         }
 
-        async function callGemini(model, prompt){
-            // 백엔드 API를 통해 안전하게 호출
-            const response = await fetch('/api/generate', {
+        async function callOpenAI(model, prompt){
+            const { key } = loadApiState();
+            if (!key) throw new Error('OpenAI API Key가 설정되지 않았습니다.');
+            const body = {
+                model,
+                messages: [
+                    { role: 'system', content: '너는 사용자의 요구를 간결히 분석해 적합한 AI 도구와 프롬프트를 제안하는 조언자야.' },
+                    { role: 'user', content: prompt }
+                ],
+                temperature: 0.3
+            };
+            const response = await fetch('https://api.openai.com/v1/chat/completions', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ prompt, model })
+                headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${key}` },
+                body: JSON.stringify(body)
             });
-            
-            if (!response.ok) throw new Error('서버 응답 오류: ' + response.status);
+            if (!response.ok) throw new Error('OpenAI 응답 오류: ' + response.status);
             const data = await response.json();
-            
-            if (!data.success) throw new Error(data.error);
-            return data.reply;
+            return data.choices?.[0]?.message?.content || '';
         }
 
 
@@ -1614,147 +1472,6 @@
             try { return match ? JSON.parse(match[0]) : null; } catch { return null; }
         }
         function escapeHtml(s){ return (s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c])); }
-        
-        // API 키 보안 경고 표시
-        function showSecurityWarning() {
-            if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
-                const warning = document.createElement('div');
-                warning.style.cssText = `
-                    position: fixed; top: 0; left: 0; right: 0; z-index: 10000;
-                    background: #ff6b6b; color: white; padding: 10px; text-align: center;
-                    font-size: 14px; font-weight: bold;
-                `;
-                warning.innerHTML = '⚠️ 프로덕션 환경에서는 API 키가 노출될 수 있습니다. 백엔드 서버 구축을 권장합니다.';
-                document.body.prepend(warning);
-                
-                setTimeout(() => warning.remove(), 10000);
-            }
-        }
-        
-        // AI 체험하기 함수
-        async function generateDemoText() {
-            const input = document.getElementById('demoInput').value.trim();
-            const resultDiv = document.getElementById('demoResult');
-            const button = document.getElementById('demoButton');
-            const btnText = document.getElementById('demoBtnText');
-            const btnLoading = document.getElementById('demoBtnLoading');
-            
-            if (!input) {
-                resultDiv.innerHTML = '<p style="color: #ff6b6b;">💡 질문이나 요청을 입력해주세요!</p>';
-                return;
-            }
-
-            // 버튼 상태 변경
-            button.disabled = true;
-            btnText.style.display = 'none';
-            btnLoading.style.display = 'inline';
-            
-            // 로딩 메시지 표시
-            resultDiv.innerHTML = '<p style="color: #667eea;">🤖 AI가 답변을 생성하고 있습니다...</p>';
-            
-            try {
-                const state = loadApiState();
-                
-                // API 키가 이미 설정되어 있으므로 이 부분은 실행되지 않음
-                if (!state.key) {
-                    resultDiv.innerHTML = `
-                        <div style="color: #ff6b6b; padding: 1rem; background: #fff5f5; border-radius: 8px; border-left: 4px solid #ff6b6b;">
-                            <p><strong>⚠️ API 키 오류</strong></p>
-                            <p>API 키에 문제가 있습니다. 페이지를 새로고침해주세요.</p>
-                        </div>
-                    `;
-                    return;
-                }
-                
-                const prompt = `다음 질문이나 요청에 대해 친근하고 도움이 되는 답변을 한국어로 작성해주세요. 답변은 구체적이고 실용적인 정보를 포함하여 작성해주세요.
-
-질문/요청: ${input}`;
-
-                const model = state.model || 'gemini-1.5-flash';
-                const reply = await callGemini(model, prompt);
-                
-                if (reply && reply.trim()) {
-                    resultDiv.innerHTML = `
-                        <div style="background: linear-gradient(135deg, #f8f9ff, #ffffff); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #667eea; box-shadow: 0 2px 10px rgba(102, 126, 234, 0.1);">
-                            <h4 style="color: #4f46e5; margin: 0 0 1rem 0;">🤖 AI 답변</h4>
-                            <div style="line-height: 1.6; margin: 0; color: #333; white-space: pre-wrap;">${escapeHtml(reply)}</div>
-                            <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e5e7eb;">
-                                <small style="color: #666;">💡 다른 질문도 시도해보세요!</small>
-                            </div>
-                        </div>
-                    `;
-                } else {
-                    resultDiv.innerHTML = '<p style="color: #ff6b6b;">AI 응답을 받지 못했습니다. 다시 시도해주세요.</p>';
-                }
-                
-            } catch (e) {
-                const msg = (e && e.message) ? e.message : String(e);
-                let help = '';
-                
-                if (msg.includes('Failed to fetch') || msg.includes('CORS')) {
-                    help = ' (CORS 오류: 로컬 서버에서 실행해주세요)';
-                } else if (msg.includes('401') || msg.toLowerCase().includes('unauthorized')) {
-                    help = ' (API 키를 확인해주세요)';
-                } else if (msg.includes('429')) {
-                    help = ' (API 사용량 한도 초과)';
-                }
-                
-                resultDiv.innerHTML = `
-                    <div style="color: #ff6b6b; padding: 1rem; background: #fff5f5; border-radius: 8px; border-left: 4px solid #ff6b6b;">
-                        <p><strong>❌ 오류 발생</strong></p>
-                        <p>${escapeHtml(msg)}${help}</p>
-                    </div>
-                `;
-            } finally {
-                // 버튼 상태 복원
-                button.disabled = false;
-                btnText.style.display = 'inline';
-                btnLoading.style.display = 'none';
-            }
-        }
-
-        // AI 체험하기 이벤트 리스너
-        document.addEventListener('DOMContentLoaded', function() {
-            const demoInput = document.getElementById('demoInput');
-            const demoButton = document.getElementById('demoButton');
-            
-            if (demoInput) {
-                demoInput.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter' && !e.shiftKey) {
-                        e.preventDefault();
-                        generateDemoText();
-                    }
-                });
-            }
-            
-            if (demoButton) {
-                demoButton.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    generateDemoText();
-                });
-            }
-        });
-
-        // 페이지 로드 시 보안 경고 표시
-        document.addEventListener('DOMContentLoaded', showSecurityWarning);
-        
-        // 설정 버튼 직접 이벤트 리스너 (백업)
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(() => {
-                const settingsBtn = document.getElementById('openSettings');
-                if (settingsBtn) {
-                    console.log('설정 버튼 백업 이벤트 리스너 등록');
-                    settingsBtn.onclick = function(e) {
-                        e.preventDefault();
-                        console.log('설정 버튼 직접 클릭됨');
-                        const modal = document.querySelector('.modal');
-                        if (modal) {
-                            modal.classList.add('open');
-                        }
-                    };
-                }
-            }, 1000);
-        });
     </script>
 </body>
 </html>

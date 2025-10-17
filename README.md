@@ -1,75 +1,41 @@
-# AI Manual
+# AI Manual - AI와 함께하는 능률 레벨업
 
-AI와 함께하는 능률 레벨업을 위한 종합 가이드 웹사이트
+🤖 **AI 도구 활용을 위한 종합 가이드**
 
-## 🚀 라이브 데모
+## 📖 소개
 
-- [GitHub Pages](https://yourusername.github.io/cursorstudy)
-- [Vercel](https://ai-manual.vercel.app)
-- [Netlify](https://ai-manual.netlify.app)
+AI Manual은 교육, 디자인, 마케팅 분야에서 AI 도구를 효과적으로 활용할 수 있도록 도와주는 종합 가이드입니다.
 
 ## ✨ 주요 기능
 
-- 🤖 **AI 체험하기**: Gemini API를 통한 실시간 AI 대화
-- 🎯 **상황별 AI 추천**: 맞춤형 AI 도구 추천 시스템
-- 📚 **교재개발 가이드**: 교육용 AI 도구 활용법
-- 🎨 **디자인 가이드**: 디자인용 AI 도구 활용법
-- 📢 **마케팅 가이드**: 마케팅용 AI 도구 활용법
-- 🛠️ **인기 AI 도구**: 실제 사이트 연결
+- **교재개발**: ChatGPT, Claude, Perplexity AI 등 활용법
+- **디자인**: DALL-E 3, Midjourney, Adobe Firefly 등 이미지 생성 도구
+- **마케팅**: AI 기반 콘텐츠 제작 및 마케팅 전략
+- **상황별 AI 추천**: OpenAI API 연동으로 맞춤형 AI 도구 추천
+- **인기 AI 도구**: 실제 AI 사이트로 바로 연결
+
+## 🚀 사용 방법
+
+1. 웹사이트에 접속
+2. 원하는 분야 선택 (교재개발, 디자인, 마케팅)
+3. 상황별 추천에서 목표와 조건 입력
+4. AI 추천 받기 버튼 클릭
+5. 추천된 AI 도구와 프롬프트 예시 확인
 
 ## 🛠️ 기술 스택
 
-- **Frontend**: HTML5, CSS3, JavaScript (ES6+)
-- **API**: Google Gemini API
-- **스타일링**: CSS Grid, Flexbox, 그라데이션
-- **애니메이션**: CSS 애니메이션, 스크롤 효과
+- **Frontend**: HTML5, CSS3, JavaScript
+- **AI Integration**: OpenAI API
+- **Deployment**: GitHub Pages
 
-## 📦 설치 및 실행
+## 📝 라이선스
 
-### 로컬 개발
-```bash
-# 저장소 클론
-git clone https://github.com/yourusername/cursorstudy.git
-
-# 로컬 서버 실행
-python3 -m http.server 8000
-# 또는
-npx http-server -p 8000
-```
-
-### 배포
-```bash
-# Vercel 배포
-npx vercel --prod
-
-# Netlify 배포
-npx netlify deploy --prod
-```
-
-## 🔧 환경 설정
-
-### API 키 설정
-1. [Google AI Studio](https://makersuite.google.com/app/apikey)에서 API 키 발급
-2. 환경변수에 `GEMINI_API_KEY` 설정
-
-### 환경변수 예시
-```bash
-GEMINI_API_KEY=your_api_key_here
-```
-
-## 📄 라이선스
-
-MIT License - 자유롭게 사용 가능
+이 프로젝트는 MIT 라이선스 하에 배포됩니다.
 
 ## 🤝 기여하기
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+버그 리포트나 기능 제안은 언제든 환영합니다!
 
-## 📞 문의
+---
 
-- 이메일: info@aimanual.com
-- 전화: 02-1234-5678
+**Live Demo**: [GitHub Pages](https://사용자명.github.io/저장소명)
