@@ -38,4 +38,4 @@ AI Manual은 교육, 디자인, 마케팅 분야에서 AI 도구를 효과적으
 
 ---
 
-**Live Demo**: [GitHub Pages](https://사용자명.github.io/저장소명)
+**Live Demo**: GitHub Pages에서 확인 가능

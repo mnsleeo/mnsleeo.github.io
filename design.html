@@ -52,6 +52,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            text-decoration: none;
         }
 
         .nav-links {
@@ -127,6 +128,99 @@
             box-shadow: 0 8px 25px rgba(255, 255, 255, 0.6);
         }
 
+        /* Section Navigation Buttons */
+        .section-btn {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 20px;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .section-btn:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 1);
+        }
+
+        .section-icon {
+            font-size: 3.5rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .section-btn h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .section-btn p {
+            color: #666;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* AI Tools Grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .tool-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #f0f0f0;
+            text-align: center;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .tool-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .tool-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .tool-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .tool-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .tool-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+
         /* Main Content */
         .main-content {
             background: white;
@@ -147,6 +241,157 @@
             background-clip: text;
         }
 
+        .section-subtitle {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* Review Process */
+        .review-process {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: stretch;
+            gap: 2rem;
+        }
+
+        .review-step {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 2px solid #667eea;
+            transition: all 0.3s ease;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .review-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .step-header h4 {
+            font-size: 1.5rem;
+            color: #333;
+            margin: 0;
+        }
+
+        .step-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            flex-grow: 1;
+        }
+
+        .step-item {
+            padding: 1rem;
+            background: linear-gradient(135deg, #f8f9ff, #ffffff);
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .step-item strong {
+            color: #667eea;
+            margin-right: 0.5rem;
+        }
+
+        .arrow-down {
+            display: none;
+        }
+
+        .arrow-right {
+            text-align: center;
+            font-size: 3rem;
+            color: #667eea;
+            margin: 0 1rem;
+            animation: pulse 2s infinite;
+            align-self: center;
+            flex-shrink: 0;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.7;
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 968px) {
+            .review-process {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .arrow-right {
+                transform: rotate(90deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .review-step {
+                padding: 1.5rem;
+            }
+
+            .step-number {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .step-header h4 {
+                font-size: 1.2rem;
+            }
+
+            .arrow-right {
+                font-size: 2rem;
+            }
+        }
+
         /* Table Section (for curriculum, design) */
         .table-wrap {
             overflow-x: auto;
@@ -165,7 +410,7 @@
         .ai-table thead th {
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: #fff;
-            padding: 14px 16px;
+            padding: 18px 20px;
             text-align: left;
             font-weight: 600;
             position: sticky;
@@ -173,10 +418,20 @@
         }
 
         .ai-table tbody td {
-            padding: 14px 16px;
+            padding: 18px 20px;
             vertical-align: top;
             border-top: 1px solid #eee;
             color: #444;
+            line-height: 1.9;
+        }
+        
+        .ai-table tbody td br {
+            line-height: 2.5;
+        }
+        
+        .ai-table tbody td .indent {
+            display: inline-block;
+            padding-left: 1.5em;
         }
 
         .ai-table tbody tr:hover {
@@ -252,9 +507,10 @@
         /* Tips Section */
         .tips-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
         }
+        
 
         .tip-item {
             background: linear-gradient(135deg, #f8f9fa, #e9ecef);
@@ -621,22 +877,16 @@
             transform: translateY(0);
         }
     </style>
-</head>
-<body>
+</head><body>
     <!-- Header -->
     <header class="header">
         <nav class="nav container">
-            <div class="logo">🤖 AI 메뉴얼</div>
+            <a href="index.html" class="logo">🤖 AI 메뉴얼</a>
             <ul class="nav-links">
-                <li><a href="#home">홈</a></li>
-                <li><a href="#curriculum">교재개발</a></li>
-                <li><a href="#design">디자인</a></li>
-                <li><a href="#marketing">마케팅</a></li>
-                <li><a href="#tools">AI 도구</a></li>
-                <li><a href="#recommend">상황별 추천</a></li>
-                <li><a href="#tips">활용 팁</a></li>
-                <li><a href="#contact">문의</a></li>
-                <li><a href="#" id="openSettings">설정</a></li>
+                <li><a href="index.html">홈</a></li>
+                <li><a href="curriculum.html">교재개발</a></li>
+                <li><a href="design.html">디자인</a></li>
+                <li><a href="marketing.html">마케팅</a></li>
             </ul>
         </nav>
     </header>
@@ -644,130 +894,165 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
-            <h1>AI와 함께하는 능률 레벨업</h1>
-            <p>인공지능을 활용하여 업무 효율성을 극대화하고 새로운 가능성을 발견하세요</p>
-            <a href="#tools" class="cta-button">AI 도구 탐색하기</a>
+            <h1>📚 교재개발</h1>
+            <p>AI를 활용한 교재 작성, 번역, 문항 제작, 교정 방법을 알아보세요</p>
+            
+            <!-- Section Navigation Buttons -->
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; max-width: 900px; margin-left: auto; margin-right: auto;">
+                <a href="curriculum.html" class="section-btn">
+                    <span class="section-icon">📚</span>
+                    <h3>교재개발</h3>
+                    <p>지문 작성, 번역, 문항 제작, 교정</p>
+                </a>
+                <a href="design.html" class="section-btn">
+                    <span class="section-icon">🎨</span>
+                    <h3>디자인</h3>
+                    <p>이미지 생성, 삽화, 표지 디자인</p>
+                </a>
+                <a href="marketing.html" class="section-btn">
+                    <span class="section-icon">📢</span>
+                    <h3>마케팅</h3>
+                    <p>SNS 캠페인, 광고 카피, 리서치</p>
+                </a>
+            </div>
         </div>
     </section>
 
     <!-- Main Content -->
     <main class="main-content">
-        <!-- Recommend Section -->
-        <section id="recommend" class="recommend-section">
+        <!-- 1. 작문 Section -->
+        <section id="writing" class="section">
             <div class="container">
-                <h2 class="section-title scroll-animate">상황별 AI 추천</h2>
-                <div class="scroll-animate">
-                    <form id="recForm" class="rec-form">
-                        <input class="input" type="text" id="goal" placeholder="목표 (예: 교재용 문항 제작, 브랜드 이미지 생성)">
-                        <select class="select" id="domain">
-                            <option value="">분야 선택</option>
-                            <option value="writing">작문/교정</option>
-                            <option value="translation">번역</option>
-                            <option value="assessment">문항/평가</option>
-                            <option value="design">디자인/이미지</option>
-                            <option value="marketing">마케팅/카피</option>
-                            <option value="video">영상/모션</option>
-                            <option value="search">리서치/검색</option>
-                        </select>
-                        <select class="select" id="constraints">
-                            <option value="">제약 조건</option>
-                            <option value="speed">빠른 작업</option>
-                            <option value="quality">품질 우선</option>
-                            <option value="evidence">출처/근거 필요</option>
-                            <option value="free">무료/저비용</option>
-                            <option value="privacy">사내/개인정보 고려</option>
-                        </select>
-                        <input class="input" type="text" id="keywords" placeholder="키워드 (쉼표로 구분)">
-                        <textarea class="textarea full" id="context" placeholder="상황 설명을 자유롭게 입력하세요. (예: 학년/수준, 매체, 톤, 마감시간 등)"></textarea>
-                        <div class="rec-actions full">
-                            <button type="button" class="demo-button" id="btnRecommend">
-                                <span id="btnText">🤖 AI 추천 받기</span>
-                                <span id="btnLoading" style="display: none;">⏳ 분석 중...</span>
-                            </button>
-                            <button type="button" class="clear-button" id="btnClear">
-                                <span class="clear-icon">🔄</span>
-                                <span>초기화</span>
-                            </button>
-                        </div>
-                    </form>
-                    <div id="recChips" style="margin-bottom: .75rem"></div>
-                    <div id="recResults" class="rec-result"></div>
-                </div>
-            </div>
-        </section>
-        <!-- 1. 교재 개발 Section -->
-        <section id="curriculum" class="section">
-            <div class="container">
-                <h2 class="section-title scroll-animate">교재개발</h2>
+                <h2 class="section-title scroll-animate">작문 (Writing)</h2>
                 <div class="table-wrap scroll-animate">
                     <table class="ai-table">
                         <thead>
                             <tr>
-                                <th style="width: 16%">AI 도구</th>
-                                <th style="width: 44%">구체 프롬프트 예시</th>
-                                <th style="width: 40%">활용 포인트</th>
+                                <th style="width: 18%">AI 도구</th>
+                                <th style="width: 41%">구체 프롬프트 예시</th>
+                                <th style="width: 41%">활용 포인트</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><span class="badge">작문</span>ChatGPT</td>
+                                <td><strong>ChatGPT</strong></td>
                                 <td>• 학습 목표에 맞는 영어 지문 3개 작성<br>• 학생 수준(HS2, 16세)에 맞춘 흥미로운 문장 구성<br>• 교재용 대화체 예문 생성</td>
-                                <td>주제와 수준을 명확히 제시하면 빠르게 초안 작성 가능. 학습 목표, 단어 수준 명시 필수</td>
+                                <td>• 주제와 수준을 명확히 제시하면 빠르게 초안 작성 가능<br>• 학습 목표, 단어 수준 명시 필수</td>
                             </tr>
                             <tr>
-                                <td><span class="badge">작문</span>Claude</td>
+                                <td><strong>Claude</strong></td>
                                 <td>• 특정 문법 포인트를 활용한 예문 10개 생성<br>• 글의 톤: 재미있고 자연스럽게</td>
-                                <td>문체·톤 조절이 쉽고, ChatGPT와 비교해 장문의 글 작성에 강점</td>
+                                <td>• 문체·톤 조절이 쉽고, ChatGPT와 비교해 장문의 글 작성에 강점</td>
                             </tr>
                             <tr>
-                                <td><span class="badge">작문</span>Jasper</td>
+                                <td><strong>Jasper</strong></td>
                                 <td>• AI 글쓰기 도구 활용, 학생 참여형 질문 포함</td>
-                                <td>블로그나 SNS용 교육 자료, 시리즈 콘텐츠 제작 시 효율적</td>
+                                <td>• 블로그나 SNS용 교육 자료, 시리즈 콘텐츠 제작 시 효율적</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 번역 Section -->
+        <section id="translation" class="section">
+            <div class="container">
+                <h2 class="section-title scroll-animate">번역 (Translation)</h2>
+                <div class="table-wrap scroll-animate">
+                    <table class="ai-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 18%">AI 도구</th>
+                                <th style="width: 41%">구체 프롬프트 예시</th>
+                                <th style="width: 41%">활용 포인트</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>DeepL</strong></td>
+                                <td>• 영어 지문을 한국어로 자연스럽게 번역<br>• 한국어 지문을 영어 학습용으로 변환</td>
+                                <td>• 번역 품질 높음<br>• 문맥·학습용 수준 고려 가능</td>
                             </tr>
                             <tr>
-                                <td><span class="badge">번역</span>DeepL</td>
-                                <td>• "영어 지문을 한국어로 자연스럽게 번역"<br>• "한국어 지문을 영어 학습용으로 변환"</td>
-                                <td>번역 품질 높음, 문맥·학습용 수준 고려 가능</td>
-                            </tr>
-                            <tr>
-                                <td><span class="badge">번역</span>ChatGPT + DeepL</td>
+                                <td><strong>ChatGPT + DeepL</strong></td>
                                 <td>• ChatGPT로 영작 후 DeepL로 자연스러운 표현 개선</td>
-                                <td>두 단계 활용: ChatGPT → 초안 생성, DeepL → 자연스러운 문장</td>
+                                <td>• 두 단계로 활용<br>• ChatGPT → 초안 생성 / DeepL → 자연스러운 문장</td>
                             </tr>
                             <tr>
-                                <td><span class="badge">번역</span>Google Translate</td>
+                                <td><strong>Google Translate</strong></td>
                                 <td>• 간단 문장, 빠른 참고용</td>
-                                <td>다소 직역 가능, 참고용으로 활용</td>
+                                <td>• 다소 직역 가능<br>• 참고용으로 활용</td>
                             </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 문항 Section -->
+        <section id="assessment" class="section">
+            <div class="container">
+                <h2 class="section-title scroll-animate">문제 제작 (Exercise/Assessment)</h2>
+                <div class="table-wrap scroll-animate">
+                    <table class="ai-table">
+                        <thead>
                             <tr>
-                                <td><span class="badge">문항</span>ChatGPT</td>
+                                <th style="width: 18%">AI 도구</th>
+                                <th style="width: 41%">구체 프롬프트 예시</th>
+                                <th style="width: 41%">활용 포인트</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>ChatGPT</strong></td>
                                 <td>• 지문 기반 단어/문법 문제 5개 생성<br>• 객관식/주관식/빈칸 등 문제 유형 지정</td>
-                                <td>난이도, 문법 포인트 명시하면 맞춤형 문제 제작 가능</td>
+                                <td>• 난이도, 문법 포인트 명시하면 맞춤형 문제 제작 가능</td>
                             </tr>
                             <tr>
-                                <td><span class="badge">문항</span>Perplexity AI</td>
+                                <td><strong>Perplexity AI</strong></td>
                                 <td>• 최신 교육 트렌드·디지털 학습 도구 관련 문제 생성<br>• 출처 기반 답변 생성</td>
-                                <td>정확도 높은 자료 기반 문제 제작, 근거 제시 가능</td>
+                                <td>• 정확도 높은 자료 기반 문제 제작<br>• 근거 제시 가능</td>
                             </tr>
                             <tr>
-                                <td><span class="badge">문항</span>Quizlet</td>
+                                <td><strong>Quizlet</strong></td>
                                 <td>• 단어장·퀴즈 자동 생성</td>
-                                <td>단어·숙어 반복 학습용, 학생 맞춤 세트 제작</td>
+                                <td>• 단어·숙어 반복 학습용<br>• 학생 맞춤 세트 제작</td>
                             </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 교정 Section -->
+        <section id="editing" class="section">
+            <div class="container">
+                <h2 class="section-title scroll-animate">검수·교정 (Proofreading/Editing)</h2>
+                <div class="table-wrap scroll-animate">
+                    <table class="ai-table">
+                        <thead>
                             <tr>
-                                <td><span class="badge">교정</span>Perplexity AI</td>
+                                <th style="width: 18%">AI 도구</th>
+                                <th style="width: 41%">구체 프롬프트 예시</th>
+                                <th style="width: 41%">활용 포인트</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Perplexity AI</strong></td>
                                 <td>• 문법·표현 오류 점검<br>• 최신 영어 교육 표현 확인</td>
-                                <td>정확도가 높음, 근거 기반 검수 가능</td>
+                                <td>• 정확도가 높음<br>• 근거 기반 검수 가능</td>
                             </tr>
                             <tr>
-                                <td><span class="badge">교정</span>Grammarly</td>
+                                <td><strong>Grammarly</strong></td>
                                 <td>• 문법·표현·문체 검토<br>• 학생 수준 맞춤 피드백</td>
-                                <td>영어 문법 오류 빠르게 수정, 스타일 체크 가능</td>
+                                <td>• 영어 문법 오류 빠르게 수정<br>• 스타일 체크 가능</td>
                             </tr>
                             <tr>
-                                <td><span class="badge">교정</span>ChatGPT</td>
+                                <td><strong>ChatGPT</strong></td>
                                 <td>• 교재용 문장 자연스러운 문체로 수정</td>
-                                <td>톤 조절, 교재용 예문 다듬기 유리</td>
+                                <td>• 톤 조절<br>• 교재용 예문 다듬기 유리</td>
                             </tr>
                         </tbody>
                     </table>
@@ -775,108 +1060,8 @@
             </div>
         </section>
 
-        <!-- 2. 디자인 Section -->
-        <section id="design" class="section">
-            <div class="container">
-                <h2 class="section-title scroll-animate">디자인</h2>
-                <div class="table-wrap scroll-animate">
-                    <table class="ai-table">
-                        <thead>
-                            <tr>
-                                <th style="width: 16%">AI 도구</th>
-                                <th style="width: 44%">구체 프롬프트 예시</th>
-                                <th style="width: 40%">활용 포인트</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>DALLE 3 (OpenAI/MS)</td>
-                                <td>"자연광과 흰 배경으로 사실적인 제품 이미지를 만들어 줘."</td>
-                                <td>• 사실적 인물·제품 이미지 제작에 최적화<br>• 자연스러운 배경과 조명 구현 가능<br>• 교재 실사 이미지, 광고 시각 자료에 활용</td>
-                            </tr>
-                            <tr>
-                                <td>Adobe Firefly</td>
-                                <td>"잡지 표지용 벡터 스타일 일러스트를 만들어 줘. Adobe Illustrator와 호환 가능해야 해."</td>
-                                <td>• Adobe CC 연동으로 편집 용이<br>• 출판·편집용 고해상도 그래픽 제작 가능<br>• 저작권 안정성 확보 가능</td>
-                            </tr>
-                            <tr>
-                                <td>Stable Diffusion / Clipdrop</td>
-                                <td>"조명 변화를 반영한 미래 도시 콘셉트 스케치를 만들어 줘."</td>
-                                <td>• 오픈소스 커스터마이징 최적<br>• 러프 드로잉, 콘셉트 스케치 제작 강점<br>• 이미지 조명과 질감 세부 조절 가능</td>
-                            </tr>
-                            <tr>
-                                <td>Midjourney</td>
-                                <td>"드라마틱하고 예술적인 스타일의 판타지 캐릭터를 그려 줘."</td>
-                                <td>• 아트워크·일러스트레이션에 최적화<br>• 스타일 일관성과 고품질<br>• 교재 표지, 브랜드 시각 자료에 활용</td>
-                            </tr>
-                            <tr>
-                                <td>Runway</td>
-                                <td>"구름이 움직이는 석양 장면의 짧은 영상 클립을 만들어 줘."</td>
-                                <td>• 모션 그래픽·영상 편집 자동화<br>• 씬 확장, 자막 생성 기능<br>• 교육용 숏폼 콘텐츠 제작에 적합</td>
-                            </tr>
-                            <tr>
-                                <td>Playground AI</td>
-                                <td>"만화 스타일 캐릭터를 다양한 포즈로 시트 생성해줘."</td>
-                                <td>• 캐릭터 일러스트 반복 생성에 유리<br>• 스케치 기반 리파인 지원<br>• 교재용 캐릭터 시트 제작에 활용</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-
-        <!-- 3. 마케팅 Section -->
-        <section id="marketing" class="section">
-            <div class="container">
-                <h2 class="section-title scroll-animate">마케팅</h2>
-                <div class="table-wrap scroll-animate">
-                    <table class="ai-table">
-                        <thead>
-                            <tr>
-                                <th style="width: 16%">AI 도구</th>
-                                <th style="width: 44%">구체 프롬프트 예시</th>
-                                <th style="width: 40%">활용 포인트</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><span class="badge">콘텐츠</span>ChatGPT</td>
-                                <td>• 교육 브랜드용 SNS 캠페인 아이디어 10개 생성<br>• 타겟: 중학생 학부모, 톤: 친근하고 신뢰감 있게</td>
-                                <td>브레인스토밍과 초안 작성에 효율적. 다양한 톤과 스타일 조절 가능</td>
-                            </tr>
-                            <tr>
-                                <td><span class="badge">리서치</span>Perplexity AI</td>
-                                <td>• "2024년 교육 마케팅 트렌드를 요약해줘. 특히 디지털 학습 도구, AI 학습 보조앱과 연계된 콘텐츠 마케팅 사례를 중심으로."</td>
-                                <td>시장 동향·경쟁사 캠페인 조사용으로 효율적. 출처 기반 답변을 함께 제시함</td>
-                            </tr>
-                            <tr>
-                                <td><span class="badge">SNS</span>ChatGPT</td>
-                                <td>• 인스타그램용 교육 콘텐츠 캡션 5개 작성<br>• 해시태그 10개 포함, 이모지 활용</td>
-                                <td>SNS 최적화된 콘텐츠 생성. 플랫폼별 특성에 맞는 톤 조절 가능</td>
-                            </tr>
-                            <tr>
-                                <td><span class="badge">카피</span>ChatGPT</td>
-                                <td>• 교육 서비스 홍보용 A/B 테스트 카피 3세트 생성<br>• 각각 다른 어필 포인트로 구성</td>
-                                <td>다양한 마케팅 카피 변형 생성. 타겟별 맞춤 메시지 개발에 유용</td>
-                            </tr>
-                            <tr>
-                                <td><span class="badge">이미지</span>DALLE 3</td>
-                                <td>"마케팅 브로슈어용 빠른 콘셉트 이미지를 만들어 줘."</td>
-                                <td>• 빠른 시안 작업에 최적<br>• DALL·E 3 기반으로 상업적 활용도 높음<br>• 브랜드 일관성 유지 가능</td>
-                            </tr>
-                            <tr>
-                                <td><span class="badge">영상</span>Runway</td>
-                                <td>• 교육 서비스 소개용 30초 영상 스크립트 기반으로 모션 그래픽 생성</td>
-                                <td>영상 콘텐츠 자동화 제작. SNS용 숏폼 콘텐츠에 적합</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-
-        <!-- AI Tools Section -->
-        <section id="tools" class="section">
+        <!-- AI 도구 모음 -->
+        <section class="section">
             <div class="container">
                 <h2 class="section-title scroll-animate">인기 AI 도구</h2>
                 <div class="tools-grid">
@@ -884,25 +1069,160 @@
                         <span class="tool-icon">📝</span>
                         <h3>ChatGPT</h3>
                         <p>텍스트 생성, 번역, 코딩, 창작 등 다양한 작업을 도와주는 대화형 AI</p>
-                        <a href="https://chat.openai.com" target="_blank" class="tool-link">자세히 보기</a>
+                        <a href="https://chat.openai.com" target="_blank" class="tool-link">사이트 바로가기</a>
                     </div>
                     <div class="tool-card scroll-animate">
-                        <span class="tool-icon">🎨</span>
-                        <h3>DALL-E 3</h3>
-                        <p>텍스트 설명을 바탕으로 창의적이고 독창적인 이미지를 생성하는 AI</p>
-                        <a href="https://openai.com/dall-e-3" target="_blank" class="tool-link">자세히 보기</a>
+                        <span class="tool-icon">✍️</span>
+                        <h3>Claude</h3>
+                        <p>장문 텍스트 처리와 논리적 분석에 특화된 Anthropic의 대화형 AI</p>
+                        <a href="https://claude.ai" target="_blank" class="tool-link">사이트 바로가기</a>
                     </div>
                     <div class="tool-card scroll-animate">
                         <span class="tool-icon">🔍</span>
                         <h3>Perplexity AI</h3>
                         <p>출처가 있는 정확한 정보 검색과 질문 답변을 제공하는 AI 검색 엔진</p>
-                        <a href="https://perplexity.ai" target="_blank" class="tool-link">자세히 보기</a>
+                        <a href="https://perplexity.ai" target="_blank" class="tool-link">사이트 바로가기</a>
                     </div>
                     <div class="tool-card scroll-animate">
-                        <span class="tool-icon">🎨</span>
-                        <h3>Midjourney</h3>
-                        <p>예술적이고 스타일리시한 이미지를 생성하는 고품질 AI 이미지 생성 도구</p>
-                        <a href="https://www.midjourney.com" target="_blank" class="tool-link">자세히 보기</a>
+                        <span class="tool-icon">🌐</span>
+                        <h3>DeepL</h3>
+                        <p>고품질 자동 번역을 제공하는 AI 번역기</p>
+                        <a href="https://www.deepl.com" target="_blank" class="tool-link">사이트 바로가기</a>
+                    </div>
+                    <div class="tool-card scroll-animate">
+                        <span class="tool-icon">✓</span>
+                        <h3>Grammarly</h3>
+                        <p>영어 문법 및 스타일 검사를 자동으로 수행하는 AI 도구</p>
+                        <a href="https://www.grammarly.com" target="_blank" class="tool-link">사이트 바로가기</a>
+                    </div>
+                    <div class="tool-card scroll-animate">
+                        <span class="tool-icon">📚</span>
+                        <h3>Quizlet</h3>
+                        <p>단어장·퀴즈 자동 생성으로 학습 효율을 높여주는 플랫폼</p>
+                        <a href="https://quizlet.com" target="_blank" class="tool-link">사이트 바로가기</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 피드백 루프 체계 -->
+        <section class="section">
+            <div class="container">
+                <h3 class="section-subtitle" style="text-align: center; margin: 3rem 0 2rem;">피드백 루프 체계</h3>
+                <div class="tips-container">
+                    <div class="tip-item scroll-animate">
+                        <span class="tip-number">1</span>
+                        <h4>초기 검토</h4>
+                        <p><strong>ChatGPT/Claude:</strong> 프롬프트를 구체화하고 초안을 받은 후, "이 내용을 더 쉽게", "다른 예시로" 피드백 제시</p>
+                    </div>
+                    <div class="tip-item scroll-animate">
+                        <span class="tip-number">2</span>
+                        <h4>학년/수준 조정</h4>
+                        <p><strong>초등학교:</strong> "이 문장을 더 쉽게", "단어를 더 간단하게" → ChatGPT 재생성</p>
+                        <p><strong>중학교:</strong> "이 내용을 조금 어렵게", "실생활 예시 추가"</p>
+                        <p><strong>고등학교:</strong> "논리적 흐름 강화", "심화 개념 포함"</p>
+                    </div>
+                    <div class="tip-item scroll-animate">
+                        <span class="tip-number">3</span>
+                        <h4>검토 및 정제</h4>
+                        <p><strong>문법:</strong> Grammarly로 문법, 스타일 체크</p>
+                        <p><strong>번역:</strong> DeepL로 자연스러운 문장 검증</p>
+                        <p><strong>출처:</strong> Perplexity로 정보 확인</p>
+                    </div>
+                    <div class="tip-item scroll-animate">
+                        <span class="tip-number">4</span>
+                        <h4>최종 검증</h4>
+                        <p><strong>교육과정 기준:</strong> 교육과정 기준에 맞는지 검증</p>
+                        <p><strong>난이도 확인:</strong> 학년별 적합성 확인</p>
+                        <p><strong>저작권 검토:</strong> 사용한 AI 도구의 저작권 정책 확인</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 허용/금지 기준 -->
+        <section class="section">
+            <div class="container">
+                <h3 class="section-subtitle" style="text-align: center; margin: 3rem 0 2rem;">허용/금지 기준 가이드</h3>
+                <div class="features-grid" style="margin-bottom: 3rem;">
+                    <div class="feature-item scroll-animate" style="background: #f0fdf4; border: 2px solid #10b981;">
+                        <span class="feature-icon">✅</span>
+                        <h4>허용되는 사용</h4>
+                        <ul style="text-align: left; line-height: 1.8;">
+                            <li>✓ 교내/교외 교육 자료 제작</li>
+                            <li>✓ 출판사 교재 개발 (플랜 확인 필요)</li>
+                            <li>✓ 출처 명시한 리서치 자료 보조</li>
+                            <li>✓ 학생 개인 과제 제작</li>
+                        </ul>
+                    </div>
+                    <div class="feature-item scroll-animate" style="background: #fef2f2; border: 2px solid #ef4444;">
+                        <span class="feature-icon">❌</span>
+                        <h4>금지 또는 주의</h4>
+                        <ul style="text-align: left; line-height: 1.8;">
+                            <li>✗ 저작권 침해되는 창작물 복제</li>
+                            <li>✗ 허위 정보 기반 교육 자료</li>
+                            <li>✗ 출처 없이 재배포</li>
+                            <li>✗ 각 플랫폼 정책 위반 사용</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 검토 체계 -->
+        <section class="section">
+            <div class="container">
+                <h3 class="section-subtitle" style="text-align: center; margin: 3rem 0 2rem;">검토 체계</h3>
+                <div class="review-process scroll-animate" style="margin-bottom: 3rem;">
+                    <div class="review-step">
+                        <div class="step-header">
+                            <span class="step-number">1</span>
+                            <h4>1차 자동 검토</h4>
+                        </div>
+                        <div class="step-content">
+                            <div class="step-item"><strong>담당자</strong> AI 도구 자체</div>
+                            <div class="step-item"><strong>검토 항목</strong> 빠른 오류 탐지, 기본형식 검증</div>
+                            <div class="step-item"><strong>검토 도구</strong> ChatGPT, Claude 자체 검증</div>
+                        </div>
+                    </div>
+                    <div class="arrow-right">→</div>
+                    <div class="review-step">
+                        <div class="step-header">
+                            <span class="step-number">2</span>
+                            <h4>2차 전문 검토</h4>
+                        </div>
+                        <div class="step-content">
+                            <div class="step-item"><strong>담당자</strong> 교사/편집자</div>
+                            <div class="step-item"><strong>검토 항목</strong> 교육적 적합성, 학년별 난이도, 톤·문체 일관성</div>
+                            <div class="step-item"><strong>검토 도구</strong> Grammarly, DeepL, 수동 검토</div>
+                        </div>
+                    </div>
+                    <div class="arrow-right">→</div>
+                    <div class="review-step">
+                        <div class="step-header">
+                            <span class="step-number">3</span>
+                            <h4>3차 법적 검토</h4>
+                        </div>
+                        <div class="step-content">
+                            <div class="step-item"><strong>담당자</strong> 법무/출판팀</div>
+                            <div class="step-item"><strong>검토 항목</strong> 저작권, 출처 명시, 상업적 사용 정책</div>
+                            <div class="step-item"><strong>검토 도구</strong> Perplexity 출처 확인, 플랫폼 정책 검토</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI 도구 모음 Section -->
+        <section id="ai-tools" class="section">
+            <div class="container">
+                <h2 class="section-title scroll-animate">AI 도구 바로가기</h2>
+                <div class="tools-grid">
+                    <div class="tool-card scroll-animate">
+                        <span class="tool-icon">📝</span>
+                        <h3>ChatGPT</h3>
+                        <p>텍스트 생성, 번역, 문항 작성, 교정 등 다양한 작업을 도와주는 대화형 AI</p>
+                        <a href="https://chat.openai.com" target="_blank" class="tool-link">자세히 보기</a>
                     </div>
                     <div class="tool-card scroll-animate">
                         <span class="tool-icon">✍️</span>
@@ -911,94 +1231,45 @@
                         <a href="https://claude.ai" target="_blank" class="tool-link">자세히 보기</a>
                     </div>
                     <div class="tool-card scroll-animate">
-                        <span class="tool-icon">🎬</span>
-                        <h3>Runway</h3>
-                        <p>AI 기반 영상 편집과 생성 도구로 모션 그래픽과 비디오 효과 제작</p>
-                        <a href="https://runwayml.com" target="_blank" class="tool-link">자세히 보기</a>
+                        <span class="tool-icon">🌐</span>
+                        <h3>DeepL</h3>
+                        <p>고품질 번역 서비스로 자연스러운 문장 변환을 제공하는 AI 번역 도구</p>
+                        <a href="https://www.deepl.com" target="_blank" class="tool-link">자세히 보기</a>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Tips Section -->
-        <section id="tips" class="section">
-            <div class="container">
-                <h2 class="section-title scroll-animate">AI 활용 성공 팁</h2>
-                <div class="tips-container">
-                    <div class="tip-item scroll-animate">
-                        <span class="tip-number">1</span>
-                        <h4>명확한 프롬프트 작성</h4>
-                        <p>AI에게 요청할 때 구체적이고 명확한 지시사항을 제공하세요. 맥락과 예시를 포함하면 더 좋은 결과를 얻을 수 있습니다.</p>
+                    <div class="tool-card scroll-animate">
+                        <span class="tool-icon">🔍</span>
+                        <h3>Perplexity AI</h3>
+                        <p>출처가 있는 정확한 정보 검색과 질문 답변을 제공하는 AI 검색 엔진</p>
+                        <a href="https://perplexity.ai" target="_blank" class="tool-link">자세히 보기</a>
                     </div>
-                    <div class="tip-item scroll-animate">
-                        <span class="tip-number">2</span>
-                        <h4>반복 학습과 개선</h4>
-                        <p>AI의 응답을 검토하고 피드백을 제공하여 점진적으로 성능을 향상시키세요. 학습 데이터의 품질이 결과에 큰 영향을 미칩니다.</p>
+                    <div class="tool-card scroll-animate">
+                        <span class="tool-icon">✅</span>
+                        <h3>Grammarly</h3>
+                        <p>영어 문법 검사 및 교정을 도와주는 AI 기반 글쓰기 도우미</p>
+                        <a href="https://www.grammarly.com" target="_blank" class="tool-link">자세히 보기</a>
                     </div>
-                    <div class="tip-item scroll-animate">
-                        <span class="tip-number">3</span>
-                        <h4>도구 조합 활용</h4>
-                        <p>여러 AI 도구를 조합하여 사용하면 시너지 효과를 얻을 수 있습니다. 예를 들어 텍스트 생성 + 이미지 생성 + 번역을 연계 사용하세요.</p>
+                    <div class="tool-card scroll-animate">
+                        <span class="tool-icon">📚</span>
+                        <h3>Quizlet</h3>
+                        <p>학습 세트와 퀴즈를 자동으로 생성하고 효율적으로 학습할 수 있는 플랫폼</p>
+                        <a href="https://quizlet.com" target="_blank" class="tool-link">자세히 보기</a>
                     </div>
-                    <div class="tip-item scroll-animate">
-                        <span class="tip-number">4</span>
-                        <h4>윤리적 사용 원칙</h4>
-                        <p>AI를 사용할 때는 저작권, 개인정보보호, 편향성 등의 윤리적 고려사항을 항상 염두에 두고 책임감 있게 활용하세요.</p>
+                    <div class="tool-card scroll-animate">
+                        <span class="tool-icon">✏️</span>
+                        <h3>Jasper</h3>
+                        <p>콘텐츠 작성과 마케팅 카피 생성에 특화된 AI 글쓰기 도구</p>
+                        <a href="https://jasper.ai" target="_blank" class="tool-link">자세히 보기</a>
                     </div>
-                    <div class="tip-item scroll-animate">
-                        <span class="tip-number">5</span>
-                        <h4>지속적인 업데이트</h4>
-                        <p>AI 기술은 빠르게 발전하고 있습니다. 새로운 기능과 업데이트를 지속적으로 확인하고 학습하여 최신 기술을 활용하세요.</p>
-                    </div>
-                    <div class="tip-item scroll-animate">
-                        <span class="tip-number">6</span>
-                        <h4>실무 적용 연습</h4>
-                        <p>이론적 지식보다는 실제 업무에 AI를 적용해보는 것이 중요합니다. 작은 프로젝트부터 시작하여 점진적으로 확장하세요.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Features Section -->
-        <section class="section">
-            <div class="container">
-                <h2 class="section-title scroll-animate">AI의 핵심 기능</h2>
-                <div class="features-grid">
-                    <div class="feature-item scroll-animate">
-                        <span class="feature-icon">⚡</span>
-                        <h4>빠른 처리 속도</h4>
-                        <p>복잡한 작업을 몇 초 만에 완료하여 업무 효율성을 극대화합니다.</p>
-                    </div>
-                    <div class="feature-item scroll-animate">
-                        <span class="feature-icon">🎯</span>
-                        <h4>정확한 분석</h4>
-                        <p>대용량 데이터를 정확하게 분석하고 의미 있는 인사이트를 제공합니다.</p>
-                    </div>
-                    <div class="feature-item scroll-animate">
-                        <span class="feature-icon">🔄</span>
-                        <h4>자동화</h4>
-                        <p>반복적인 작업을 자동화하여 시간을 절약하고 실수를 줄입니다.</p>
-                    </div>
-                    <div class="feature-item scroll-animate">
-                        <span class="feature-icon">🧠</span>
-                        <h4>지능형 학습</h4>
-                        <p>사용 패턴을 학습하여 개인화된 서비스를 제공합니다.</p>
-                    </div>
-                    <div class="feature-item scroll-animate">
-                        <span class="feature-icon">🌐</span>
-                        <h4>24/7 가용성</h4>
-                        <p>언제든지 접근 가능하여 시간과 장소의 제약 없이 활용할 수 있습니다.</p>
-                    </div>
-                    <div class="feature-item scroll-animate">
-                        <span class="feature-icon">💡</span>
-                        <h4>창의적 솔루션</h4>
-                        <p>새로운 관점과 창의적인 아이디어를 제공하여 혁신을 촉진합니다.</p>
+                    <div class="tool-card scroll-animate">
+                        <span class="tool-icon">🌍</span>
+                        <h3>Google Translate</h3>
+                        <p>빠른 번역과 다국어 지원으로 간단한 문장 번역에 유용한 번역 서비스</p>
+                        <a href="https://translate.google.com" target="_blank" class="tool-link">자세히 보기</a>
                     </div>
                 </div>
             </div>
         </section>
     </main>
-
 
     <!-- Footer -->
     <footer id="contact" class="footer">
@@ -1006,12 +1277,11 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h4>AI 메뉴얼</h4>
-                    <p>AI와 함께하는 능률 레벨업을 위한 종합 가이드</p>
+                    <p>AI와 함께하는 능률 레벨업</p>
                 </div>
                 <div class="footer-section">
-                    <h4>빠른 링크</h4>
-                    <p><a href="#tools">AI 도구</a></p>
-                    <p><a href="#tips">활용 팁</a></p>
+                    <h4>홈</h4>
+                    <p><a href="index.html">메인 페이지</a></p>
                 </div>
                 <div class="footer-section">
                     <h4>문의하기</h4>
