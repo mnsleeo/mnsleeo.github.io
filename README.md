@@ -28,6 +28,23 @@ AI Manual은 교육, 디자인, 마케팅 분야에서 AI 도구를 효과적으
 - **AI Integration**: OpenAI API
 - **Deployment**: GitHub Pages
 
+## 📤 GitHub 업로드 방법
+
+터미널에서 다음 명령어를 실행하세요:
+
+```bash
+# 1. 변경사항 확인
+git status
+
+# 2. 원격 저장소 설정 (필요시)
+git remote add origin https://github.com/mnsleeo/mnsleeo.github.io.git
+
+# 3. 푸시
+git push -u origin main
+```
+
+또는 VS Code의 Source Control 탭에서 "Sync Changes" 버튼을 클릭하세요.
+
 ## 📝 라이선스
 
 이 프로젝트는 MIT 라이선스 하에 배포됩니다.
